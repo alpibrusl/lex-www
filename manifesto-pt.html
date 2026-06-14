@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A IA está sendo forçada a usar ferramentas humanas — Python, Git, Jira, Figma — projetadas para a cognição humana. O movimento certo é um novo paradigma onde agentes IA têm ferramentas projetadas para eles.">
+    <meta name="author" content="Alfonso Sastre">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.alpibru.com/manifesto-pt">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="en" href="https://www.alpibru.com/manifesto">
+    <link rel="alternate" hreflang="fr" href="https://www.alpibru.com/manifesto-fr">
+    <link rel="alternate" hreflang="de" href="https://www.alpibru.com/manifesto-de">
+    <link rel="alternate" hreflang="pt-BR" href="https://www.alpibru.com/manifesto-pt">
+    <link rel="alternate" hreflang="x-default" href="https://www.alpibru.com/manifesto">
+
+    <title>Confiança Sem Compreensão — Manifesto Alpibru</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Confiança Sem Compreensão">
+    <meta property="og:description" content="O caso por ferramentas projetadas para IA, não adaptadas de humanos. Compreensão foi uma estratégia. Não é a única.">
+    <meta property="og:url" content="https://www.alpibru.com/manifesto-pt">
+    <meta property="og:site_name" content="Alpibru">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="article:published_time" content="2026-05-25">
+    <meta property="article:author" content="Alfonso Sastre">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Confiança Sem Compreensão">
+    <meta name="twitter:description" content="O caso por ferramentas projetadas para IA, não adaptadas de humanos. Compreensão foi uma estratégia. Não é a única.">
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Confiança Sem Compreensão",
+      "description": "O caso por ferramentas projetadas para IA, não adaptadas de humanos.",
+      "author": {
+        "@type": "Person",
+        "name": "Alfonso Sastre"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Alpibru",
+        "url": "https://www.alpibru.com"
+      },
+      "datePublished": "2026-05-25",
+      "url": "https://www.alpibru.com/manifesto-pt",
+      "inLanguage": "pt-BR"
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .manifesto-hero {
+            padding: 140px 0 60px;
+            background: linear-gradient(135deg,
+                rgba(102, 126, 234, 0.07) 0%,
+                rgba(118, 75, 162, 0.07) 50%,
+                rgba(240, 147, 251, 0.07) 100%);
+            text-align: center;
+        }
+        .manifesto-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+        .manifesto-title {
+            font-size: clamp(2.2rem, 5vw, 3.75rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .manifesto-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .manifesto-meta { font-size: 0.875rem; color: var(--text-light); }
+        .lang-switcher {
+            display: flex;
+            gap: 0.25rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .lang-switcher a {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .lang-switcher a:hover, .lang-switcher a.active {
+            color: var(--primary-color);
+            background: rgba(102, 126, 234, 0.1);
+        }
+        .lang-switcher .sep { color: var(--border-color); font-size: 0.8rem; line-height: 2; }
+        .manifesto-body { max-width: 740px; margin: 0 auto; padding: 4rem 20px 6rem; }
+        .manifesto-section { margin-bottom: 3.5rem; }
+        .manifesto-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .manifesto-section p {
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+        .manifesto-section p:last-child { margin-bottom: 0; }
+        .manifesto-section em { color: var(--text-primary); font-style: italic; }
+        .manifesto-section strong { color: var(--text-primary); font-weight: 600; }
+        .manifesto-thesis {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .manifesto-thesis p { color: var(--text-primary); font-weight: 500; margin: 0; }
+        .manifesto-code {
+            background: var(--bg-dark);
+            color: #e2e8f0;
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        .manifesto-divider {
+            text-align: center;
+            color: var(--border-color);
+            font-size: 1.5rem;
+            letter-spacing: 0.5em;
+            margin: 2.5rem 0;
+            user-select: none;
+        }
+        .manifesto-pullquote {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            line-height: 1.5;
+            margin: 2rem 0;
+            padding: 0 1rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        .division-item { margin-bottom: 1rem; }
+        .division-item strong { display: block; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .manifesto-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+        .manifesto-back:hover { gap: 0.6rem; color: var(--primary-dark); }
+        .toc {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+        }
+        .toc h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .toc ol { list-style: none; counter-reset: toc-item; padding: 0; }
+        .toc ol li { counter-increment: toc-item; margin-bottom: 0.5rem; }
+        .toc ol li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .toc ol li a::before {
+            content: counter(toc-item, upper-roman) ".";
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            min-width: 2rem;
+        }
+        .toc ol li a:hover { color: var(--primary-color); }
+        @media (max-width: 768px) { .manifesto-hero { padding: 110px 0 40px; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo"><span class="logo-text">alpibru</span></a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/#stack" class="nav-link">What we build</a>
+                    <a href="/#demo" class="nav-link">Demo</a>
+                    <a href="/#projects" class="nav-link">Projects</a>
+                    <a href="/#status" class="nav-link">Status</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="https://github.com/alpibrusl" target="_blank" rel="noopener" class="nav-link nav-link-cta">GitHub →</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+    <section class="manifesto-hero">
+        <div class="container">
+            <p class="manifesto-eyebrow">Manifesto</p>
+            <h1 class="manifesto-title">Confiança Sem Compreensão</h1>
+            <p class="manifesto-subtitle">O caso por ferramentas projetadas para IA, não adaptadas de humanos</p>
+            <p class="manifesto-meta">Alfonso Sastre &mdash; 25 de maio de 2026</p>
+            <nav class="lang-switcher" aria-label="Seletor de idioma">
+                <a href="/manifesto">EN</a>
+                <span class="sep">·</span>
+                <a href="/manifesto-fr">FR</a>
+                <span class="sep">·</span>
+                <a href="/manifesto-de">DE</a>
+                <span class="sep">·</span>
+                <a href="/manifesto-pt" class="active">PT</a>
+            </nav>
+        </div>
+    </section>
+
+    <article class="manifesto-body">
+        <a href="/" class="manifesto-back">← voltar para alpibru.com</a>
+
+        <nav class="toc" aria-label="Índice">
+            <h3>Sumário</h3>
+            <ol>
+                <li><a href="#shape-of-a-tool">A Forma de uma Ferramenta</a></li>
+                <li><a href="#shoulders-of-giants">Nos Ombros de Gigantes</a></li>
+                <li><a href="#mismatch">O Descompasso</a></li>
+                <li><a href="#trust-without-comprehension">Confiança Sem Compreensão</a></li>
+                <li><a href="#obvious-objection">A Objeção Óbvia</a></li>
+                <li><a href="#worked-example">Um Exemplo Concreto</a></li>
+                <li><a href="#beyond-code">Além do Código</a></li>
+                <li><a href="#division-of-labor">A Divisão do Trabalho</a></li>
+                <li><a href="#wager">A Aposta</a></li>
+            </ol>
+        </nav>
+
+        <section class="manifesto-section" id="shape-of-a-tool">
+            <h2>I. A Forma de uma Ferramenta</h2>
+            <p>Toda ferramenta carrega os pressupostos de quem a fez. O martelo pressupõe um pulso. O teclado pressupõe dez dedos e a capacidade de manter um pensamento tempo suficiente para digitá-lo. A planilha pressupõe uma mente capaz de visualizar uma grade e navegá-la célula por célula. Essas restrições não são defeitos — são o reconhecimento honesto de que ferramentas são feitas por humanos, para humanos, moldadas em torno da percepção e da memória humanas.</p>
+            <p>Estamos agora construindo agentes capazes de raciocinar, escrever, planejar e agir. E quase sem exceção, estamos lhes entregando ferramentas humanas.</p>
+            <p>Esse é o erro central deste momento. Não um equívoco em nenhum produto ou artigo específico — um erro estrutural na forma como estamos enquadrando o problema. Estamos pedindo aos agentes que sejam humanos muito rápidos, quando eles poderiam ser algo inteiramente diferente.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="shoulders-of-giants">
+            <h2>II. Nos Ombros de Gigantes</h2>
+            <p>Isaac Newton, escrevendo a Robert Hooke em 1675, disse: <em>"Se enxerguei mais longe, foi por estar sobre os ombros de gigantes."</em> A frase costuma ser lida como humildade. É também uma afirmação sobre como o conhecimento se acumula — cada geração herda a estrutura acumulada da anterior e a amplia, em vez de reconstruir tudo do zero.</p>
+            <p>As ferramentas que entregamos aos agentes são esses gigantes. Python, Git, SQL, Jira, Figma — décadas de pensamento cuidadoso sobre como tornar a computação e a coordenação viáveis para seres humanos. Elas merecem respeito. São conquistas extraordinárias.</p>
+            <p>Mas herdar uma ferramenta não é o mesmo que ser seu usuário natural. Newton herdou as observações de Galileu e as leis de Kepler. Não herdou o telescópio de Galileu — construiu um melhor, adequado ao que pretendia ver.</p>
+            <p class="manifesto-pullquote">Que ferramenta você construiria se o usuário não tivesse mãos, nenhum período de atenção corpórea, nenhuma necessidade de açúcar sintático, e pudesse manter mil restrições simultaneamente dentro de uma única tarefa sem esquecer nenhuma delas?</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="mismatch">
+            <h2>III. O Descompasso</h2>
+            <p>Considere o que pedimos aos agentes no domínio do software.</p>
+            <p>Pedimos que escrevam em linguagens com décadas de sintaxe acumulada para legibilidade humana — indentação, palavras-chave nomeadas, precedência de operadores implícita, convenções generosas de espaçamento. Pedimos que gerenciem controle de versão por meio de diffs baseados em linhas, onde a unidade de identidade é uma linha de texto em vez de uma unidade de significado nomeada, tipada e semanticamente estável. Pedimos que naveguem por bases de código de milhões de linhas, a maior parte das quais não é a resposta a nenhuma pergunta que o agente precise fazer. Um diff semântico que diz <em>"o tipo de <code>fn execute</code> mudou de <code>[io] → Result[A, B]</code> para <code>[io, net] → Result[A, B]</code>"</em> diz algo a um agente. Um diff que diz <em>"a linha 47 mudou"</em> diz algo a um humano. Entregamos o segundo.</p>
+            <p>Pedimos que leiam a base de código inteira para construir um modelo mental que descartarão ao fim da conversa e reconstruirão do zero na próxima chamada. Humanos constroem modelos mentais porque precisam — não conseguimos manter a estrutura de um sistema de um milhão de linhas na memória de trabalho de uma vez, e o modelo amortiza o custo da compreensão ao longo das sessões. Um agente não tem memória de trabalho entre sessões. Cada conversa é a primeira. A interface adequada para um agente não é uma base de código a ler, mas um contrato a satisfazer.</p>
+            <p>Pedimos, acima de tudo, que confiem em si mesmos por meio da compreensão. Leia o código. Entenda a especificação. Interprete o briefing. Mas compreensão é uma <em>estratégia humana</em> para construir confiança na presença de ambiguidade. Não é a única estratégia. E para um agente — rápido, incansável, mas sem memória contínua e propenso a alucinações confiantes — não é nem a melhor.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="trust-without-comprehension">
+            <h2>IV. Confiança Sem Compreensão</h2>
+            <div class="manifesto-thesis">
+                <p>A tese deste ensaio é que compreensão não é a única base para a confiança, e que ferramentas nativas de agentes devem ser projetadas em torno de uma diferente: verificação.</p>
+            </div>
+            <p>Por <em>compreensão</em> entendo especificamente a exigência de que um humano leia e simule mentalmente um sistema para poder atestá-lo. A compreensão conceitual do que o sistema faz e por quê permanece essencial; o que muda é se essa validação interpretativa linha por linha é o substrato sobre o qual se constrói a confiança mecânica.</p>
+            <p>A pergunta certa não é <em>"como tornar Python melhor para agentes?"</em> É: se você estivesse projetando uma linguagem de programação para um agente — não para um humano escrever, não para um humano ler, mas para um agente gerar e verificar — o que você manteria e o que descartaria?</p>
+            <p>Você manteria tipos, porque tipos são restrições verificáveis por máquina. Manteria estruturas de dados algébricas, porque tornam estados ilegais irrepresentáveis. Manteria efeitos, não como convenção de documentação, mas como declaração formal: esta função pode tocar a rede; esta não pode. Um agente que gera uma função com uma linha de efeito <code>[net]</code> não precisa ler o corpo da função para saber que ela toca a rede. O sistema de tipos diz isso. O sistema de tipos diz ao chamador. <strong>Confiança sem compreensão.</strong></p>
+            <p>Você descartaria o controle de versão baseado em linhas, porque linhas são um formato de serialização humano. A unidade significativa de um programa não é uma linha — é uma função, um tipo, um módulo. Nós AST endereçados por conteúdo, identidades estáveis entre reformatações, versionamento semântico de funções e não de arquivos — esses são os primitivos de um controle de versão projetado para um agente.</p>
+            <p>Você descartaria grandes bases de código como unidade de especificação. A interface adequada para um agente é uma especificação formal compacta — uma assinatura de tipo, um conjunto de exemplos, um conjunto de propriedades — a partir da qual ele pode gerar uma implementação correta. Não uma implementação de referência para imitar, mas um contrato a satisfazer.</p>
+            <p>E você adicionaria <strong>atestação</strong>. Não revisão — atestação. Um agente pode gerar código; um verificador de tipos pode certificá-lo; um harness de testes pode executá-lo; uma sandbox pode rodá-lo com efeitos restritos; um log append-only pode registrar exatamente o que aconteceu, assinado, endereçado por conteúdo, à prova de adulteração. Essa cadeia não é compreendida — é verificada, em cada elo.</p>
+            <p>O substrato não é hostil a humanos. Suporta projeções — visões de código legíveis, resumos narrativos, diffs no estilo de linha — derivadas da mesma forma canônica. O que muda é qual representação é estrutural para a confiança.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="obvious-objection">
+            <h2>V. A Objeção Óbvia</h2>
+            <p>A resposta reflexiva a "confiança sem compreensão" é: <em>mas alguém ainda precisa entender o sistema quando ele quebra.</em> Quando um regulador pergunta por que uma decisão automatizada foi tomada, quando um engenheiro é acionado às 3 da manhã, quando um cliente exige responsabilização — "o verificador de tipos disse que estava correto" não é resposta suficiente.</p>
+            <p>Essa é a objeção mais forte a todo o enquadramento, e merece uma resposta direta.</p>
+            <p>É verdade que humanos carregam responsabilidade residual, e que essa responsabilidade não pode ser delegada apenas a máquinas. Mas note o que a objeção realmente pede. Ela não pede que o humano <em>rederive</em> o comportamento do sistema a partir de primeiros princípios. Pede que o humano consiga <em>auditar</em> o sistema após o fato: qual foi a entrada, qual foi a saída, quais restrições foram verificadas, quais efeitos foram declarados, o que foi registrado.</p>
+            <p>A confiança baseada em compreensão exige que o humano mantenha o sistema inteiro em mente, antecipadamente, para atestá-lo. A confiança baseada em verificação exige que o humano mantenha as <em>restrições</em> do sistema em mente — a especificação, o conjunto de efeitos, a política — e confie nas ferramentas para aplicá-las. A superfície de auditoria é menor. A revisão é mais precisa. O humano é engajado onde seu julgamento importa: na especificação, na política, no rastreamento — não em cada linha de cada corpo de função.</p>
+            <p>Isso não é a abolição da supervisão humana. É a relocação da supervisão humana para a camada onde ela de fato agrega valor, e a delegação do restante a mecanismos que escalam.</p>
+            <p>A verificação escala bem para propriedades formais — tipos, efeitos, capacidades, invariantes. Escala parcialmente para comportamentos testáveis, onde propriedades e exemplos bem escolhidos podem substituir a especificação completa. Escala mal para propriedades estéticas ou intencionais, onde o julgamento humano permanece o único árbitro disponível. O argumento aqui não é que a verificação substitui o julgamento em todo lugar — apenas que deve substituir a compreensão sempre que puder, para que o julgamento seja reservado às questões que só humanos podem responder.</p>
+            <p>O paradigma atual pede que humanos compreendam tudo e confiem em nada. O paradigma nativo de agentes pede que humanos especifiquem o que importa e verifiquem se isso se sustenta. O primeiro é exaustivo e cada vez mais impossível na escala em que os agentes estão começando a operar. O segundo é como toda disciplina de engenharia madura já funciona — engenheiros civis não verificam pessoalmente cada rebite; especificam a carga e confiam na cadeia de certificação.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="worked-example">
+            <h2>VI. Um Exemplo Concreto</h2>
+            <p>O argumento acima é conceitual. Aqui está um artefato concreto.</p>
+            <p>Construí <code>lex-code</code>, um assistente de programação com IA escrito inteiramente em Lex — uma linguagem de programação projetada sob a disciplina deste ensaio. Os prompts de sistema para cada modo de agente (build, spec, test, review) têm cerca de cinco linhas de Lex cada. O agente que gerou a implementação trabalhou a partir de uma referência compacta da linguagem e da descrição do papel — sem uma base de código Lex existente para imitar, sem exemplos idiomáticos além dos que a própria referência continha.</p>
+            <p>O orquestrador gerencia execução paralela de múltiplos agentes com concorrência tipada por efeitos. Uma assinatura lê:</p>
+            <pre class="manifesto-code">fn run_parallel(...) -> [env, concurrent, net, llm, io, proc, sql, fs_write, time] MultiResult</pre>
+            <p>O agente deduziu essa assinatura a partir da especificação, não de dados de treinamento. Compôs as linhas de efeito corretamente entre sub-agentes paralelos. Encadeou <code>Result</code> e <code>Option</code> por cada caminho de erro. Distinguiu construção-como-dado (a definição do agente) de execução-como-efeito (a invocação do agente), sem ser instruído a fazê-lo.</p>
+            <p>É assim que <em>"projetado para um agente gerar"</em> se parece na prática: o substrato carrega as restrições; o modelo preenche os corpos; o sistema de tipos verifica o resultado. O modelo não é confiável porque foi compreendido. É confiável porque o que produziu foi verificado — pelo verificador de tipos, pelo verificador de especificação, pelo gate de capacidades, pelo rastreamento. <strong>Confiança sem compreensão, de ponta a ponta.</strong></p>
+            <p>O artefato não é o ponto. O ponto é que o artefato existe, foi produzido sob a disciplina que o ensaio descreve, e se comporta da forma que o ensaio prevê. O substrato fez o trabalho.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="beyond-code">
+            <h2>VII. Além do Código</h2>
+            <p>O argumento se generaliza além das linguagens de programação, embora não vá desenvolver esse caso completamente aqui. Em síntese:</p>
+            <p>Cada domínio do trabalho do conhecimento humano foi organizado em torno das restrições cognitivas humanas. O sprint é de duas semanas porque a atenção humana não sustenta ciclos mais longos sem um ponto de verificação visível. O briefing de marketing é um documento porque humanos precisam de narrativa para se coordenar em torno de ambiguidades. O roadmap do produto é uma apresentação porque humanos precisam de hierarquia visual para estabelecer prioridades. Nenhuma dessas restrições se aplica a agentes.</p>
+            <p>O princípio tem a mesma forma em todo domínio: substitua <strong>compreensão</strong> por <strong>verificação</strong>, substitua <strong>artefatos legíveis por humanos</strong> por <strong>especificações verificáveis por máquina</strong>, substitua <strong>coordenação por reunião</strong> por <strong>coordenação por protocolo</strong>. Em código, isso significa tipos, atestação e identidade endereçada por conteúdo. Em revisão de contratos, significaria representações formais de obrigações que um agente pode verificar em vez de prosa jurídica que um sócio precisa ler. Em conformidade, significaria políticas expressas como restrições executáveis em vez de PDFs interpretados por equipes de auditoria. Em design experimental, significaria protocolos pré-registrados que um agente pode validar em vez de seções de métodos que humanos precisam confiar.</p>
+            <p>O que permanece constante em todos eles é o que <em>não</em> muda: humanos ainda definem os objetivos, humanos ainda carregam a responsabilidade, humanos ainda decidem o que vale a pena verificar. O princípio não desloca o julgamento humano. Ele reloca a superfície sobre a qual o julgamento é exercido — de compreender o sistema para especificar o que o sistema deve fazer.</p>
+            <p>Há uma aposta mais profunda por trás desta: que mais da coordenação humana pode ser expressa como restrições, protocolos e especificações verificáveis por máquina do que a prática atual supõe. Essa é a afirmação controversa, e o caso por ela fica para outro ensaio.</p>
+            <p>O ponto deste é mais modesto: que o princípio é sólido, que o exemplo concreto existe, e que o movimento é o mesmo onde quer que um agente encontre um substrato construído para outra pessoa.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="division-of-labor">
+            <h2>VIII. A Divisão do Trabalho</h2>
+            <p>Nada disso é um argumento contra humanos. É um argumento por uma separação de responsabilidades mais clara.</p>
+            <div class="division-item">
+                <strong>Humanos definem objetivos.</strong>
+                <p>Humanos decidem o que vale a pena construir e por quê. Humanos carregam a responsabilidade pelas consequências. Essas não são tarefas a automatizar — são tarefas que exigem o tipo particular de peso moral que só uma pessoa pode carregar.</p>
+            </div>
+            <div class="division-item">
+                <strong>Agentes executam.</strong>
+                <p>Agentes geram, verificam, compõem, testam, implantam, monitoram. São tarefas onde as restrições cognitivas humanas — memória de trabalho, período de atenção, a necessidade de sintaxe legível, a tolerância para diffs baseados em linhas — são atrito, não recursos.</p>
+            </div>
+            <p>A transição requer novos primitivos. Linguagens cujas especificações cabem em uma gramática formal compacta, não em um manual de referência de mil páginas. Controle de versão que opera sobre unidades semânticas, não linhas de texto. Formatos de especificação verificáveis por máquina, não interpretados por humanos. Sistemas de atestação que produzem confiança sem exigir compreensão em cada etapa. Protocolos de orquestração sobre os quais agentes possam raciocinar nativamente, não interpretando APIs voltadas para humanos.</p>
+            <p>Alguns desses existem em forma embrionária. O campo de ferramentas nativas de agentes está aproximadamente onde os sistemas operacionais estavam em 1970: as ideias são incipientes, as implementações são brutas, a comunidade é pequena. A oportunidade é proporcional.</p>
+        </section>
+
+        <div class="manifesto-divider">· · ·</div>
+
+        <section class="manifesto-section" id="wager">
+            <h2>IX. A Aposta</h2>
+            <p>O momento atual é uma aposta.</p>
+            <p>Uma aposta é que a estratégia certa é tornar as ferramentas humanas existentes incrementalmente melhores para agentes — janelas de contexto maiores, recuperação melhor, engenharia de prompt melhor, fine-tuning melhor em bases de código existentes. Essa aposta diz que a forma da ferramenta está bem; o agente só precisa melhorar em usá-la.</p>
+            <p>A outra aposta é que <strong>a forma da ferramenta importa</strong>. Que há capacidades — em geração de código, em ação coordenada através de sistemas complexos — que não são alcançáveis por um agente usando um martelo, por mais capaz que o agente se torne. Que o movimento certo não é treinar agentes para ler melhor o histórico do Git, mas dar-lhes controle de versão que nunca foi projetado em torno da legibilidade humana.</p>
+            <p>A segunda aposta é mais difícil. Requer construir nova infraestrutura em vez de instrumentar a existente. Requer convencer comunidades construídas em torno de ferramentas humanas de que as próprias ferramentas, e não seus usuários, são a variável a mudar. Requer aceitar um período em que as novas ferramentas são imaturas — um vale entre <em>"ferramentas humanas, usadas por IA"</em> e <em>"ferramentas nativas de agentes, maduras o suficiente para se confiar."</em></p>
+            <p>Mas a segunda aposta é também a que é consistente com a natureza real da mudança. Agentes não são humanos mais rápidos. Têm pontos fortes diferentes, modos de falha diferentes, requisitos diferentes de confiança e verificação. Dar-lhes ferramentas projetadas para a cognição humana não é uma escolha neutra — é uma escolha de deixar a maior parte do seu potencial inexplorado, e de pedir a humanos que compreendam em uma escala que a compreensão não consegue mais alcançar.</p>
+            <p>Estamos sobre os ombros de gigantes. Agora construímos a próxima camada — não contra o que os gigantes construíram, mas para um escritor diferente, um leitor diferente, uma base diferente para a confiança.</p>
+            <p class="manifesto-pullquote">Compreensão foi uma estratégia. Não é a única.</p>
+            <p style="margin-top: 2rem; color: var(--text-light); font-style: italic;">— Alfonso Sastre, 25 de maio de 2026</p>
+        </section>
+    </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="logo-text">alpibru</h3>
+                    <p>Open infrastructure for AI agent ecosystems.</p>
+                    <p class="footer-meta">EUPL-1.2 · Built in the EU</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Open Source</h4>
+                        <a href="https://github.com/alpibrusl/agentspec" target="_blank" rel="noopener">AgentSpec</a>
+                        <a href="https://github.com/alpibrusl/noether" target="_blank" rel="noopener">Noether</a>
+                        <a href="https://github.com/alpibrusl/caloron-noether" target="_blank" rel="noopener">Caloron-Noether</a>
+                        <a href="https://github.com/alpibrusl/acli" target="_blank" rel="noopener">ACLI</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Documentation</h4>
+                        <a href="https://alpibrusl.github.io/agentspec/" target="_blank" rel="noopener">AgentSpec Docs</a>
+                        <a href="https://alpibrusl.github.io/noether/" target="_blank" rel="noopener">Noether Docs</a>
+                        <a href="https://alpibrusl.github.io/caloron-noether/" target="_blank" rel="noopener">Caloron-Noether Docs</a>
+                        <a href="https://alpibrusl.github.io/acli/" target="_blank" rel="noopener">ACLI Docs</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Alpibru</h4>
+                        <a href="/">Home</a>
+                        <a href="/manifesto">Manifesto</a>
+                        <a href="/#contact">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://github.com/alpibrusl" target="_blank" rel="noopener">GitHub</a>
+                        <a href="/#contact">Contact Form</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="copyright-year">2026</span> Alpibru. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
