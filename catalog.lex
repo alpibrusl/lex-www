@@ -167,7 +167,7 @@ fn packages() -> List[Pkg] {
       hero: "" },
 
     # ── Robotics vertical ─────────────────────────────────────────────────────
-    { name: "lex-robot", layer: Robotics, status: Runnable, public: false,
+    { name: "lex-robot", layer: Robotics, status: Runnable, public: true,
       summary: "Effect-typed, capability-bounded governance layer over LeRobot.",
       hero: "make demo" },
   ]

@@ -51,4 +51,8 @@ New here? Read the [manifesto](https://lexlang.org) · install [lex-lang](https:
 - [lex-ocpp](https://github.com/alpibrusl/lex-ocpp) — OCPP library for Lex: v1.6 and v2.0.1 framing and handler dispatch.  _(beta)_
 - [lex-ocpi](https://github.com/alpibrusl/lex-ocpi) — OCPI 2.2.1 library for Lex: CPO / eMSP / PTP role endpoints.  _(beta)_
 
+## Robotics
+
+- [lex-robot](https://github.com/alpibrusl/lex-robot) — Effect-typed, capability-bounded governance layer over LeRobot.  _(runnable)_
+
 _This file is generated from `catalog.lex` by `generate.lex` — do not edit by hand._
