@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "target": "lex",
+    "public": ".",
+    "ignore": [
+      "firebase.json", "**/.*", "**/node_modules/**",
+      "*.lex", "Makefile", "scripts/**", "*.md", ".github/**", "DEPLOYMENT.md"
+    ],
+    "cleanUrls": true,
+    "redirects": [
+      { "source": "/manifesto-fr", "destination": "/manifesto", "type": 301 },
+      { "source": "/manifesto-de", "destination": "/manifesto", "type": 301 },
+      { "source": "/manifesto-pt", "destination": "/manifesto", "type": 301 }
+    ],
+    "headers": [
+      { "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico|css|js)",
+        "headers": [ { "key": "Cache-Control", "value": "max-age=31536000" } ] }
+    ]
+  }
+}

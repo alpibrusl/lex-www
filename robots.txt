@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# LLM-friendly index
+Allow: /llms.txt
+
+Sitemap: https://www.alpibru.com/sitemap.xml

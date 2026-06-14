@@ -103,6 +103,30 @@ fn llms() -> [io] Unit {
   ], ""))
 }
 
+# ── HTML fragment (injected into index.html between markers) ─────────────────
+fn pkg_html(p :: cat.Pkg) -> Str {
+  str.join([
+    "      <li><a href=\"", repo_url(p), "\">", p.name, "</a>",
+    "<span class=\"st st-", status_label(p.status), "\">", status_label(p.status), "</span>",
+    "<p>", p.summary, "</p></li>"
+  ], "")
+}
+
+fn section_html(l :: cat.Layer) -> Str {
+  let rows := list.map(list.filter(cat.packages(), in_layer(l)), pkg_html)
+  if list.is_empty(rows) {
+    ""
+  } else {
+    str.join(["  <section class=\"layer\">\n    <h3>", layer_title(l), "</h3>\n    <ul class=\"pkgs\">\n",
+              str.join(rows, "\n"), "\n    </ul>\n  </section>"], "")
+  }
+}
+
+fn packages_html() -> [io] Unit {
+  let secs := list.filter(list.map(layers(), section_html), fn (s :: Str) -> Bool { str.is_empty(s) == false })
+  io.print(str.join(secs, "\n"))
+}
+
 fn readme() -> [io] Unit {
   io.print(str.join([
     "# Lex\n\n",

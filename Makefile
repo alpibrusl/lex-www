@@ -14,15 +14,20 @@ help: ## Show targets
 check: ## Type-check the catalog + generator
 	@lex check catalog.lex && lex check generate.lex
 
-gen: check ## Regenerate llms.txt + the org-profile README from the catalog
-	@$(RUN) llms   | $(STRIP) > llms.txt
-	@$(RUN) readme | $(STRIP) > README.md
-	@echo "regenerated: llms.txt, README.md"
+gen: check ## Regenerate llms.txt, README.md, and the index.html package list
+	@$(RUN) llms          | $(STRIP) > llms.txt
+	@$(RUN) readme        | $(STRIP) > README.md
+	@$(RUN) packages_html | $(STRIP) > /tmp/lex-pkgs.html
+	@bash scripts/inject.sh index.html /tmp/lex-pkgs.html
+	@echo "regenerated: llms.txt, README.md, index.html"
 
 verify: check ## Fail if any committed surface drifted from catalog.lex
-	@$(RUN) llms   | $(STRIP) > /tmp/lex-llms.gen
-	@$(RUN) readme | $(STRIP) > /tmp/lex-readme.gen
+	@$(RUN) llms          | $(STRIP) > /tmp/lex-llms.gen
+	@$(RUN) readme        | $(STRIP) > /tmp/lex-readme.gen
+	@$(RUN) packages_html | $(STRIP) > /tmp/lex-pkgs.html
+	@cp index.html /tmp/lex-index.gen && bash scripts/inject.sh /tmp/lex-index.gen /tmp/lex-pkgs.html
 	@diff -u llms.txt /tmp/lex-llms.gen >/dev/null && \
 	 diff -u README.md /tmp/lex-readme.gen >/dev/null && \
+	 diff -u index.html /tmp/lex-index.gen >/dev/null && \
 	 echo "surfaces in sync with catalog.lex" || \
 	 { echo "DRIFT: a committed surface differs from catalog.lex — run 'make gen'"; exit 1; }

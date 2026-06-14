@@ -1,0 +1,33 @@
+name: ci
+# Anti-drift: the committed surfaces (llms.txt, README.md, index.html package
+# list) must match what generate.lex produces from catalog.lex, and catalog.lex
+# must match GitHub reality (no public lex-* orphans / mislabeled visibility).
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    env:
+      LEX_VERSION: v0.9.10
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install lex toolchain
+        run: |
+          set -euo pipefail
+          tgt=x86_64-unknown-linux-gnu
+          curl -fsSL "https://github.com/alpibrusl/lex-lang/releases/download/${LEX_VERSION}/lex-${LEX_VERSION}-${tgt}.tar.gz" -o /tmp/lex.tgz
+          tar -xzf /tmp/lex.tgz -C /tmp
+          sudo mv "/tmp/lex-${LEX_VERSION}-${tgt}/lex" /usr/local/bin/lex
+          lex version
+      - name: Surfaces in sync with catalog.lex
+        run: make verify
+      - name: Catalog matches GitHub reality
+        run: bash scripts/check_reality.sh
