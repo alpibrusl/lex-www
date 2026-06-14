@@ -17,9 +17,13 @@ for m in re.finditer(r'\{[^{}]*?name:\s*"([^"]+)"[^{}]*?public:\s*(true|false)[^
     cat_flag[m.group(1)] = (m.group(2) == "true")
 cat_public = {n for n, p in cat_flag.items() if p}
 
+# Meta repos that are not catalogued packages (this site repo itself, etc.).
+EXCLUDE = {"lex-www"}
+
 repos = json.loads(subprocess.check_output(
     ["gh","repo","list","alpibrusl","--limit","300","--json","name,visibility"]))
-gh_public = {r["name"] for r in repos if r["name"].startswith("lex") and r["visibility"]=="PUBLIC"}
+gh_public = {r["name"] for r in repos
+             if r["name"].startswith("lex") and r["visibility"]=="PUBLIC" and r["name"] not in EXCLUDE}
 
 fail = 0
 orphans = sorted(gh_public - cat_names)
