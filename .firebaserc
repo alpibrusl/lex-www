@@ -1,8 +1,0 @@
-{
-  "projects": { "default": "alpibru-common" },
-  "targets": {
-    "alpibru-common": {
-      "hosting": { "lex": ["lexlang"] }
-    }
-  }
-}

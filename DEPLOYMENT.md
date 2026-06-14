@@ -1,44 +1,43 @@
-# Deploying lexlang.org
+# Deploying lexlang.org (GitHub Pages)
 
 The Lex front door is a static site **generated from `catalog.lex`**. Edit only
 `catalog.lex`; `make gen` regenerates `llms.txt`, `README.md`, and the package
 list inside `index.html`. CI (`.github/workflows/ci.yml`) fails if a committed
-surface drifts from the catalog, or if a public `lex-*` repo is missing from it.
+surface drifts from the catalog, or if the catalog drifts from GitHub reality.
 
 ## Local
 
 ```sh
-make gen      # regenerate surfaces from catalog.lex
-make verify   # fail if anything drifted
+make gen                 # regenerate surfaces from catalog.lex
+make verify              # fail if anything drifted
+bash scripts/build_site.sh   # assemble _site/ (what Pages serves)
 ```
 
-## Hosting (Firebase, project `alpibru-common`, a second site)
+## Hosting — GitHub Pages
 
-One-time setup (manual — needs the Firebase owner):
+`.github/workflows/pages.yml` builds `_site/` (a clean copy: `index.html`,
+`/manifesto/`, `llms.txt`, `styles.css`, favicons, `robots.txt`, `CNAME`) and
+deploys it on every push to `main`. No server, no secrets. The repo must be
+public (Pages Free tier) — it is.
 
-1. **Create the hosting site** (id `lexlang`, matching `.firebaserc`):
-   ```sh
-   firebase hosting:sites:create lexlang --project alpibru-common
+### One-time: point the domain
+1. In **Settings → Pages**, confirm Source = **GitHub Actions** and the custom
+   domain shows `lexlang.org` (set by the `CNAME` file in the artifact).
+2. At the registrar (**Webempresa**), replace the current `lexlang.org` A record
+   (→ `213.158.86.70`) with the four GitHub Pages apex A records:
    ```
-2. **Add the custom domain** `lexlang.org` (and `www.lexlang.org`) to that site in
-   the Firebase console → Hosting → Add custom domain. Firebase gives you the A
-   records (and a TXT to verify).
-3. **Point DNS at Firebase** at the registrar (Webempresa): replace the current
-   `lexlang.org` A record (→ `213.158.86.70`, Webempresa) with the A records
-   Firebase provides; add the TXT verification record. `lexlang.dev` can 301 to
-   `lexlang.org`.
-4. **Add the deploy secret** to this repo: `FIREBASE_SERVICE_ACCOUNT_ALPIBRU_COMMON`
-   (the same service-account JSON used by the alpibru.com site), under
-   Settings → Secrets → Actions.
-5. **Enable auto-deploy**: in `.github/workflows/deploy.yml`, change
-   `on: workflow_dispatch` to `on: { push: { branches: [main] } }`. Until then,
-   deploy manually from the Actions tab (Run workflow) or:
-   ```sh
-   make gen && firebase deploy --only hosting:lex --project alpibru-common
+   185.199.108.153
+   185.199.109.153
+   185.199.110.153
+   185.199.111.153
    ```
+   (and the AAAA records `2606:50c0:8000::153` … `8003::153` if you want IPv6).
+   Optionally add `www.lexlang.org` as a CNAME → `alpibrusl.github.io`.
+3. GitHub provisions TLS automatically once DNS resolves; then tick **Enforce
+   HTTPS** in Settings → Pages.
 
-## What deploys
+Until DNS is pointed, the site is live at `https://alpibrusl.github.io/lex-www/`
+(absolute asset paths assume the custom domain, so use the domain for the real
+check).
 
-`index.html`, `manifesto*.html`, `llms.txt`, `styles.css`, `script.js`, favicons,
-`robots.txt`. The sources (`*.lex`, `Makefile`, `scripts/`, `*.md`) are ignored by
-`firebase.json`.
+`lexlang.dev` can 301-redirect to `lexlang.org` at the registrar.
