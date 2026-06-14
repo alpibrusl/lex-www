@@ -14,8 +14,12 @@
 # Coarse layer the package sits in (ordered substrate -> verticals in generate.lex).
 type Layer = Substrate | Library | Agents | Finance | Energy | Robotics
 
-# How far along it is. "Runnable" is a claim the reality check enforces against
-# green CI / a runnable demo — keep conservative; it is cheap to bump later.
+# How far along it is — assigned from EVIDENCE, not opinion (scripts/audit_status.sh):
+#   Runnable = latest push CI green AND has an examples/ demo
+#   Beta     = latest push CI green AND has tests (no demo yet)
+#   Alpha    = code exists but CI is red or absent (unverified)
+#   Idea     = essentially empty / a plan
+# Fix a repo's CI and re-run the audit to promote it — labels are earned.
 type Status = Runnable | Beta | Alpha | Idea
 
 type Pkg = {
@@ -40,13 +44,13 @@ fn packages() -> List[Pkg] {
     { name: "lex-os", layer: Substrate, status: Runnable, public: true,
       summary: "Sealed, sandboxed execution box handed to an agent with a goal and a budget.",
       hero: "lex-os check --grant grant.json agent.lex" },
-    { name: "lex-os-manifest", layer: Substrate, status: Beta, public: true,
+    { name: "lex-os-manifest", layer: Substrate, status: Alpha, public: true,
       summary: "Manifest format as a Lex package: trust dimensions, grants, narrowing inheritance as types.",
       hero: "" },
-    { name: "lex-cli", layer: Substrate, status: Beta, public: true,
+    { name: "lex-cli", layer: Substrate, status: Alpha, public: true,
       summary: "CLI framework for Lex: arg parsing, ACLI output, config, authenticated HTTP client.",
       hero: "" },
-    { name: "lex-spec", layer: Substrate, status: Beta, public: true,
+    { name: "lex-spec", layer: Substrate, status: Runnable, public: true,
       summary: "Capability-precondition + spec DSL: Spec ADT, evaluator, property checks, SMT-LIB export.",
       hero: "" },
     { name: "lex-hub", layer: Substrate, status: Beta, public: false,
@@ -57,31 +61,31 @@ fn packages() -> List[Pkg] {
       hero: "" },
 
     # ── Libraries: horizontal building blocks ─────────────────────────────────
-    { name: "lex-web", layer: Library, status: Beta, public: true,
+    { name: "lex-web", layer: Library, status: Alpha, public: true,
       summary: "HTTP + WebSocket framework: actor-model concurrency; one schema drives every artifact.",
       hero: "" },
-    { name: "lex-schema", layer: Library, status: Beta, public: true,
+    { name: "lex-schema", layer: Library, status: Alpha, public: true,
       summary: "Pydantic-style runtime validation, codegen, and schema utilities for Lex.",
       hero: "" },
-    { name: "lex-orm", layer: Library, status: Beta, public: true,
+    { name: "lex-orm", layer: Library, status: Alpha, public: true,
       summary: "Typed query builder, migration runner, and live std.sql driver built on lex-schema.",
       hero: "" },
-    { name: "lex-money", layer: Library, status: Runnable, public: true,
+    { name: "lex-money", layer: Library, status: Alpha, public: true,
       summary: "Exact decimal monetary arithmetic for the Lex language.",
       hero: "" },
     { name: "lex-log", layer: Library, status: Runnable, public: true,
       summary: "OpenTelemetry-compatible structured logging, tracing, and metrics for Lex.",
       hero: "" },
-    { name: "lex-llm", layer: Library, status: Beta, public: true,
+    { name: "lex-llm", layer: Library, status: Alpha, public: true,
       summary: "Pure-Lex LLM-agent runtime: provider abstraction, tool-call loop, structured outputs.",
       hero: "" },
-    { name: "lex-mcp", layer: Library, status: Beta, public: true,
+    { name: "lex-mcp", layer: Library, status: Alpha, public: true,
       summary: "MCP stdio server bridging lex-agent Skills to MCP JSON-RPC.",
       hero: "" },
-    { name: "lex-trail", layer: Library, status: Runnable, public: true,
+    { name: "lex-trail", layer: Library, status: Alpha, public: true,
       summary: "Content-addressed, append-only audit trail: attestation chains and task replay.",
       hero: "" },
-    { name: "lex-jobs", layer: Library, status: Beta, public: true,
+    { name: "lex-jobs", layer: Library, status: Alpha, public: true,
       summary: "SQL-backed durable background job queue: enqueue, pull, dispatch, ack, retries.",
       hero: "" },
     { name: "lex-crypto", layer: Library, status: Beta, public: true,
@@ -89,13 +93,13 @@ fn packages() -> List[Pkg] {
       hero: "" },
 
     # ── Agents & orchestration ────────────────────────────────────────────────
-    { name: "lex-agent", layer: Agents, status: Beta, public: true,
+    { name: "lex-agent", layer: Agents, status: Alpha, public: true,
       summary: "Pure-Lex Google A2A protocol: AgentCard, JSON-RPC, Task lifecycle, SSE streaming.",
       hero: "" },
     { name: "lex-guard", layer: Agents, status: Beta, public: true,
       summary: "Agent spending guardrails: capability-gated budget tokens with an attestation trail.",
       hero: "" },
-    { name: "lex-code", layer: Agents, status: Beta, public: true,
+    { name: "lex-code", layer: Agents, status: Alpha, public: true,
       summary: "Lex-native coding assistant built entirely in the Lex ecosystem.",
       hero: "" },
     { name: "lex-loom", layer: Agents, status: Alpha, public: true,
@@ -109,39 +113,39 @@ fn packages() -> List[Pkg] {
       hero: "" },
 
     # ── Finance vertical ──────────────────────────────────────────────────────
-    { name: "lex-finance", layer: Finance, status: Beta, public: true,
+    { name: "lex-finance", layer: Finance, status: Alpha, public: true,
       summary: "Agent-native finance software stack for the Lex language.",
       hero: "" },
-    { name: "lex-risk", layer: Finance, status: Runnable, public: true,
+    { name: "lex-risk", layer: Finance, status: Alpha, public: true,
       summary: "Portfolio Greeks, notional, and Reg-T margin aggregation.",
       hero: "" },
-    { name: "lex-positions", layer: Finance, status: Beta, public: true,
+    { name: "lex-positions", layer: Finance, status: Alpha, public: true,
       summary: "Position tracking with WAAC, realized PnL, and a SQL-backed store.",
       hero: "" },
-    { name: "lex-trade", layer: Finance, status: Beta, public: true,
+    { name: "lex-trade", layer: Finance, status: Alpha, public: true,
       summary: "Pre-trade order validation for the Lex language.",
       hero: "" },
-    { name: "lex-sor", layer: Finance, status: Beta, public: true,
+    { name: "lex-sor", layer: Finance, status: Alpha, public: true,
       summary: "Smart order routing for the Lex finance stack.",
       hero: "" },
-    { name: "lex-fix", layer: Finance, status: Beta, public: true,
+    { name: "lex-fix", layer: Finance, status: Alpha, public: true,
       summary: "FIX 4.4 protocol adapter for the Lex language.",
       hero: "" },
-    { name: "lex-marketdata", layer: Finance, status: Beta, public: true,
+    { name: "lex-marketdata", layer: Finance, status: Alpha, public: true,
       summary: "Market and reference data for the Lex finance stack.",
       hero: "" },
-    { name: "lex-oms", layer: Finance, status: Runnable, public: true,
+    { name: "lex-oms", layer: Finance, status: Alpha, public: true,
       summary: "HTTP Order Management System wiring the finance stack on lex-web.",
       hero: "" },
-    { name: "lex-oms-agent", layer: Finance, status: Beta, public: true,
+    { name: "lex-oms-agent", layer: Finance, status: Alpha, public: true,
       summary: "LLM-backed autonomous trading agents with compile-time effect isolation.",
       hero: "" },
 
     # ── Energy & EV vertical ──────────────────────────────────────────────────
-    { name: "lex-ocpp", layer: Energy, status: Beta, public: true,
+    { name: "lex-ocpp", layer: Energy, status: Runnable, public: true,
       summary: "OCPP library for Lex: v1.6 and v2.0.1 framing and handler dispatch.",
       hero: "" },
-    { name: "lex-ocpi", layer: Energy, status: Beta, public: true,
+    { name: "lex-ocpi", layer: Energy, status: Runnable, public: true,
       summary: "OCPI 2.2.1 library for Lex: CPO / eMSP / PTP role endpoints.",
       hero: "" },
     { name: "lex-csms", layer: Energy, status: Beta, public: false,
