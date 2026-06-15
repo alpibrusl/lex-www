@@ -112,47 +112,47 @@
     <ul class="pkgs">
       <li><a href="https://github.com/alpibrusl/lex-lang">lex-lang</a><span class="st st-runnable">runnable</span><p>Typed-effect language built for LLM authorship; effects are the contract, checked before run.</p></li>
       <li><a href="https://github.com/alpibrusl/lex-os">lex-os</a><span class="st st-runnable">runnable</span><p>Sealed, sandboxed execution box handed to an agent with a goal and a budget.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-os-manifest">lex-os-manifest</a><span class="st st-alpha">alpha</span><p>Manifest format as a Lex package: trust dimensions, grants, narrowing inheritance as types.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-cli">lex-cli</a><span class="st st-alpha">alpha</span><p>CLI framework for Lex: arg parsing, ACLI output, config, authenticated HTTP client.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-os-manifest">lex-os-manifest</a><span class="st st-beta">beta</span><p>Manifest format as a Lex package: trust dimensions, grants, narrowing inheritance as types.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-cli">lex-cli</a><span class="st st-runnable">runnable</span><p>CLI framework for Lex: arg parsing, ACLI output, config, authenticated HTTP client.</p></li>
       <li><a href="https://github.com/alpibrusl/lex-spec">lex-spec</a><span class="st st-runnable">runnable</span><p>Capability-precondition + spec DSL: Spec ADT, evaluator, property checks, SMT-LIB export.</p></li>
     </ul>
   </section>
   <section class="layer">
     <h3>Libraries — horizontal building blocks</h3>
     <ul class="pkgs">
-      <li><a href="https://github.com/alpibrusl/lex-web">lex-web</a><span class="st st-alpha">alpha</span><p>HTTP + WebSocket framework: actor-model concurrency; one schema drives every artifact.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-schema">lex-schema</a><span class="st st-alpha">alpha</span><p>Pydantic-style runtime validation, codegen, and schema utilities for Lex.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-orm">lex-orm</a><span class="st st-alpha">alpha</span><p>Typed query builder, migration runner, and live std.sql driver built on lex-schema.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-money">lex-money</a><span class="st st-alpha">alpha</span><p>Exact decimal monetary arithmetic for the Lex language.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-web">lex-web</a><span class="st st-runnable">runnable</span><p>HTTP + WebSocket framework: actor-model concurrency; one schema drives every artifact.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-schema">lex-schema</a><span class="st st-runnable">runnable</span><p>Pydantic-style runtime validation, codegen, and schema utilities for Lex.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-orm">lex-orm</a><span class="st st-runnable">runnable</span><p>Typed query builder, migration runner, and live std.sql driver built on lex-schema.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-money">lex-money</a><span class="st st-runnable">runnable</span><p>Exact decimal monetary arithmetic for the Lex language.</p></li>
       <li><a href="https://github.com/alpibrusl/lex-log">lex-log</a><span class="st st-runnable">runnable</span><p>OpenTelemetry-compatible structured logging, tracing, and metrics for Lex.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-llm">lex-llm</a><span class="st st-alpha">alpha</span><p>Pure-Lex LLM-agent runtime: provider abstraction, tool-call loop, structured outputs.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-mcp">lex-mcp</a><span class="st st-alpha">alpha</span><p>MCP stdio server bridging lex-agent Skills to MCP JSON-RPC.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-trail">lex-trail</a><span class="st st-alpha">alpha</span><p>Content-addressed, append-only audit trail: attestation chains and task replay.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-jobs">lex-jobs</a><span class="st st-alpha">alpha</span><p>SQL-backed durable background job queue: enqueue, pull, dispatch, ack, retries.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-llm">lex-llm</a><span class="st st-runnable">runnable</span><p>Pure-Lex LLM-agent runtime: provider abstraction, tool-call loop, structured outputs.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-mcp">lex-mcp</a><span class="st st-runnable">runnable</span><p>MCP stdio server bridging lex-agent Skills to MCP JSON-RPC.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-trail">lex-trail</a><span class="st st-runnable">runnable</span><p>Content-addressed, append-only audit trail: attestation chains and task replay.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-jobs">lex-jobs</a><span class="st st-runnable">runnable</span><p>SQL-backed durable background job queue: enqueue, pull, dispatch, ack, retries.</p></li>
       <li><a href="https://github.com/alpibrusl/lex-crypto">lex-crypto</a><span class="st st-beta">beta</span><p>Crypto for Lex: JWT, OAuth2/PKCE, Argon2id, sealed cookies, webhook verify, TOTP.</p></li>
     </ul>
   </section>
   <section class="layer">
     <h3>Agents & orchestration</h3>
     <ul class="pkgs">
-      <li><a href="https://github.com/alpibrusl/lex-agent">lex-agent</a><span class="st st-alpha">alpha</span><p>Pure-Lex Google A2A protocol: AgentCard, JSON-RPC, Task lifecycle, SSE streaming.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-agent">lex-agent</a><span class="st st-runnable">runnable</span><p>Pure-Lex Google A2A protocol: AgentCard, JSON-RPC, Task lifecycle, SSE streaming.</p></li>
       <li><a href="https://github.com/alpibrusl/lex-guard">lex-guard</a><span class="st st-beta">beta</span><p>Agent spending guardrails: capability-gated budget tokens with an attestation trail.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-code">lex-code</a><span class="st st-alpha">alpha</span><p>Lex-native coding assistant built entirely in the Lex ecosystem.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-loom">lex-loom</a><span class="st st-alpha">alpha</span><p>Multi-agent sprint cycles built on lex-soft (design stage).</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-code">lex-code</a><span class="st st-runnable">runnable</span><p>Lex-native coding assistant built entirely in the Lex ecosystem.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-loom">lex-loom</a><span class="st st-beta">beta</span><p>Multi-agent sprint cycles built on lex-soft (design stage).</p></li>
     </ul>
   </section>
   <section class="layer">
     <h3>Finance</h3>
     <ul class="pkgs">
-      <li><a href="https://github.com/alpibrusl/lex-finance">lex-finance</a><span class="st st-alpha">alpha</span><p>Agent-native finance software stack for the Lex language.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-risk">lex-risk</a><span class="st st-alpha">alpha</span><p>Portfolio Greeks, notional, and Reg-T margin aggregation.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-positions">lex-positions</a><span class="st st-alpha">alpha</span><p>Position tracking with WAAC, realized PnL, and a SQL-backed store.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-trade">lex-trade</a><span class="st st-alpha">alpha</span><p>Pre-trade order validation for the Lex language.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-sor">lex-sor</a><span class="st st-alpha">alpha</span><p>Smart order routing for the Lex finance stack.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-fix">lex-fix</a><span class="st st-alpha">alpha</span><p>FIX 4.4 protocol adapter for the Lex language.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-marketdata">lex-marketdata</a><span class="st st-alpha">alpha</span><p>Market and reference data for the Lex finance stack.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-oms">lex-oms</a><span class="st st-alpha">alpha</span><p>HTTP Order Management System wiring the finance stack on lex-web.</p></li>
-      <li><a href="https://github.com/alpibrusl/lex-oms-agent">lex-oms-agent</a><span class="st st-alpha">alpha</span><p>LLM-backed autonomous trading agents with compile-time effect isolation.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-finance">lex-finance</a><span class="st st-runnable">runnable</span><p>Agent-native finance software stack for the Lex language.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-risk">lex-risk</a><span class="st st-runnable">runnable</span><p>Portfolio Greeks, notional, and Reg-T margin aggregation.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-positions">lex-positions</a><span class="st st-beta">beta</span><p>Position tracking with WAAC, realized PnL, and a SQL-backed store.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-trade">lex-trade</a><span class="st st-runnable">runnable</span><p>Pre-trade order validation for the Lex language.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-sor">lex-sor</a><span class="st st-beta">beta</span><p>Smart order routing for the Lex finance stack.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-fix">lex-fix</a><span class="st st-runnable">runnable</span><p>FIX 4.4 protocol adapter for the Lex language.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-marketdata">lex-marketdata</a><span class="st st-beta">beta</span><p>Market and reference data for the Lex finance stack.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-oms">lex-oms</a><span class="st st-runnable">runnable</span><p>HTTP Order Management System wiring the finance stack on lex-web.</p></li>
+      <li><a href="https://github.com/alpibrusl/lex-oms-agent">lex-oms-agent</a><span class="st st-runnable">runnable</span><p>LLM-backed autonomous trading agents with compile-time effect isolation.</p></li>
     </ul>
   </section>
   <section class="layer">
