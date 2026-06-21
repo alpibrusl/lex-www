@@ -56,3 +56,4 @@ New here? Read the [manifesto](https://lexlang.org) · install [lex-lang](https:
 - [lex-robot](https://github.com/alpibrusl/lex-robot) — Effect-typed, capability-bounded governance layer over LeRobot.  _(runnable)_
 
 _This file is generated from `catalog.lex` by `generate.lex` — do not edit by hand._
+
