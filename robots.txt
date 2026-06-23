@@ -4,4 +4,4 @@ Allow: /
 # LLM-friendly index
 Allow: /llms.txt
 
-Sitemap: https://www.alpibru.com/sitemap.xml
+Sitemap: https://www.lexlang.org/sitemap.xml
