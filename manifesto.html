@@ -1,567 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI is being asked to use human tools — Python, Git, Jira, Figma — designed for human cognition. The right move is a new paradigm where AI agents are first-class citizens with tools designed for them.">
-    <meta name="author" content="Alfonso Sastre">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.lexlang.org/manifesto">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust Without Comprehension — Lex Manifesto</title>
+<meta name="description" content="AI is being asked to use human tools — Python, Git, Jira, Figma — designed for human cognition. The right move is a new paradigm where AI agents are first-class citizens with tools designed for them.">
+<meta name="author" content="Alfonso Sastre">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lexlang.org/manifesto">
+<link rel="icon" href="/favicon.ico" sizes="any">
 
-    <!-- hreflang -->
-    <link rel="alternate" hreflang="en" href="https://www.lexlang.org/manifesto">
-    <link rel="alternate" hreflang="fr" href="https://www.lexlang.org/manifesto-fr">
-    <link rel="alternate" hreflang="de" href="https://www.lexlang.org/manifesto-de">
-    <link rel="alternate" hreflang="pt-BR" href="https://www.lexlang.org/manifesto-pt">
-    <link rel="alternate" hreflang="x-default" href="https://www.lexlang.org/manifesto">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Trust Without Comprehension">
+<meta property="og:description" content="A case for tools designed for AI, not adapted from humans. Comprehension was a strategy. It is not the only one.">
+<meta property="og:url" content="https://lexlang.org/manifesto">
+<meta property="og:site_name" content="Lex">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-25">
+<meta property="article:author" content="Alfonso Sastre">
 
-    <title>Trust Without Comprehension — Alpibru Manifesto</title>
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trust Without Comprehension">
+<meta name="twitter:description" content="A case for tools designed for AI, not adapted from humans. Comprehension was a strategy. It is not the only one.">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Trust Without Comprehension">
-    <meta property="og:description" content="A case for tools designed for AI, not adapted from humans. Comprehension was a strategy. It is not the only one.">
-    <meta property="og:url" content="https://www.lexlang.org/manifesto">
-    <meta property="og:site_name" content="Alpibru">
-    <meta property="og:locale" content="en_US">
-    <meta property="article:published_time" content="2026-05-25">
-    <meta property="article:author" content="Alfonso Sastre">
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Trust Without Comprehension",
+  "description": "A case for tools designed for AI, not adapted from humans.",
+  "author": {"@type": "Person", "name": "Alfonso Sastre"},
+  "publisher": {"@type": "Organization", "name": "Lex", "url": "https://lexlang.org"},
+  "datePublished": "2026-05-25",
+  "url": "https://lexlang.org/manifesto"
+}
+</script>
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Trust Without Comprehension">
-    <meta name="twitter:description" content="A case for tools designed for AI, not adapted from humans. Comprehension was a strategy. It is not the only one.">
+<style>
+  :root{
+    --bg:#0d0f12; --surface:#15181d; --surface2:#1b1f26; --line:#2a2f38;
+    --fg:#e8eaed; --muted:#9aa3b2; --accent:#7cc4ff; --accent2:#9ef0c0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  header{padding:18px 0;border-bottom:1px solid var(--line)}
+  header .wrap{max-width:980px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-weight:700;letter-spacing:.5px;color:var(--fg);text-decoration:none}
+  nav a{color:var(--muted);margin-left:18px;font-size:14px}
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
+  footer a{color:var(--muted)}
 
-    <!-- JSON-LD: Article -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Trust Without Comprehension",
-      "description": "A case for tools designed for AI, not adapted from humans.",
-      "author": {
-        "@type": "Person",
-        "name": "Alfonso Sastre"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Alpibru",
-        "url": "https://www.lexlang.org"
-      },
-      "datePublished": "2026-05-25",
-      "url": "https://www.lexlang.org/manifesto"
-    }
-    </script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        /* Manifesto-specific styles */
-        .manifesto-hero {
-            padding: 140px 0 60px;
-            background: linear-gradient(135deg,
-                rgba(102, 126, 234, 0.07) 0%,
-                rgba(118, 75, 162, 0.07) 50%,
-                rgba(240, 147, 251, 0.07) 100%);
-            text-align: center;
-        }
-
-        .manifesto-eyebrow {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-        }
-
-        .manifesto-title {
-            font-size: clamp(2.2rem, 5vw, 3.75rem);
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .manifesto-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            font-style: italic;
-            margin-bottom: 2rem;
-        }
-
-        .manifesto-meta {
-            font-size: 0.875rem;
-            color: var(--text-light);
-        }
-
-        .manifesto-body {
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 4rem 20px 6rem;
-        }
-
-        .manifesto-section {
-            margin-bottom: 3.5rem;
-        }
-
-        .manifesto-section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .manifesto-section p {
-            color: var(--text-secondary);
-            line-height: 1.85;
-            margin-bottom: 1.25rem;
-            font-size: 1.05rem;
-        }
-
-        .manifesto-section p:last-child {
-            margin-bottom: 0;
-        }
-
-        .manifesto-section em {
-            color: var(--text-primary);
-            font-style: italic;
-        }
-
-        .manifesto-section strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .manifesto-thesis {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
-            border-left: 4px solid var(--primary-color);
-            border-radius: 0 8px 8px 0;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .manifesto-thesis p {
-            color: var(--text-primary);
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .manifesto-code {
-            background: var(--bg-dark);
-            color: #e2e8f0;
-            padding: 1.25rem 1.5rem;
-            border-radius: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
-            line-height: 1.6;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            box-shadow: var(--shadow-md);
-        }
-
-        .manifesto-divider {
-            text-align: center;
-            color: var(--border-color);
-            font-size: 1.5rem;
-            letter-spacing: 0.5em;
-            margin: 2.5rem 0;
-            user-select: none;
-        }
-
-        .manifesto-pullquote {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            line-height: 1.5;
-            margin: 2rem 0;
-            padding: 0 1rem;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .division-item {
-            margin-bottom: 1rem;
-        }
-
-        .division-item strong {
-            display: block;
-            font-size: 1.05rem;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .manifesto-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-        }
-
-        .manifesto-back:hover {
-            gap: 0.6rem;
-            color: var(--primary-dark);
-        }
-
-        .toc {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .toc h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .toc ol {
-            list-style: none;
-            counter-reset: toc-item;
-            padding: 0;
-        }
-
-        .toc ol li {
-            counter-increment: toc-item;
-            margin-bottom: 0.5rem;
-        }
-
-        .toc ol li a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-
-        .toc ol li a::before {
-            content: counter(toc-item, upper-roman) ".";
-            font-size: 0.75rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            min-width: 2rem;
-        }
-
-        .toc ol li a:hover {
-            color: var(--primary-color);
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: 0.25rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .lang-switcher a {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .lang-switcher a:hover,
-        .lang-switcher a.active {
-            color: var(--primary-color);
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        .lang-switcher .sep {
-            color: var(--border-color);
-            font-size: 0.8rem;
-            line-height: 2;
-        }
-
-        @media (max-width: 768px) {
-            .manifesto-hero {
-                padding: 110px 0 40px;
-            }
-        }
-    </style>
+  /* article */
+  .article-wrap{padding:56px 0 80px}
+  .back{display:inline-block;color:var(--muted);font-size:0.9rem;margin-bottom:2.5rem}
+  .back:hover{color:var(--fg)}
+  .eyebrow{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;
+    color:var(--muted);font-weight:600;margin:0 0 1rem}
+  h1{font-size:clamp(1.9rem,5vw,2.75rem);font-weight:700;line-height:1.15;
+    letter-spacing:-0.02em;margin:0 0 1rem;color:var(--fg)}
+  .subtitle{font-size:1.1rem;color:var(--muted);font-style:italic;margin:0 0 0.75rem}
+  .meta{font-size:0.875rem;color:var(--muted);margin:0 0 3rem}
+  .toc{margin-bottom:3.5rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}
+  .toc h2{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;
+    color:var(--muted);font-weight:600;margin:0 0 1rem}
+  .toc ol{list-style:none;counter-reset:toc;padding:0;margin:0}
+  .toc li{counter-increment:toc;margin-bottom:0.4rem}
+  .toc a{color:var(--muted);font-size:0.95rem}
+  .toc a::before{content:counter(toc,upper-roman) ". ";color:var(--muted)}
+  .toc a:hover{color:var(--fg);text-decoration:none}
+  section{margin-bottom:2.5rem}
+  section h2{font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;
+    margin:0 0 1.25rem;color:var(--fg)}
+  p{margin:0 0 1.25rem;font-size:1.05rem;color:var(--muted)}
+  p:last-child{margin-bottom:0}
+  em{font-style:italic;color:var(--fg)}
+  strong{font-weight:600;color:var(--fg)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:0.9em;background:var(--surface2);padding:0.1em 0.35em;border-radius:4px}
+  pre{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;overflow:auto;font-size:13.5px;color:#cfe8ff;margin:1.5rem 0}
+  pre code{background:none;padding:0}
+  .thesis{border-left:3px solid var(--accent);padding:0.25rem 0 0.25rem 1.25rem;margin:1.5rem 0}
+  .thesis p{font-weight:500;color:var(--fg);margin:0}
+  .pullquote{font-size:1.15rem;font-weight:500;line-height:1.5;
+    margin:2rem 0;padding-left:1.25rem;border-left:3px solid var(--line);color:var(--fg)}
+  .divider{text-align:center;color:var(--line);letter-spacing:0.5em;
+    margin:2.5rem 0;user-select:none}
+  .division{margin-bottom:1rem}
+  .division strong{display:block;color:var(--fg);margin-bottom:0.25rem}
+  .signoff{margin-top:2rem;color:var(--muted);font-style:italic}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="/" class="logo">
-                    <span class="logo-text">alpibru</span>
-                </a>
-                <div class="nav-menu" id="navMenu">
-                    <a href="/#stack" class="nav-link">What we build</a>
-                    <a href="/#demo" class="nav-link">Demo</a>
-                    <a href="/#projects" class="nav-link">Projects</a>
-                    <a href="/#status" class="nav-link">Status</a>
-                    <a href="/#contact" class="nav-link">Contact</a>
-                    <a href="https://github.com/alpibrusl" target="_blank" rel="noopener" class="nav-link nav-link-cta">GitHub →</a>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
+<header><div class="wrap">
+  <a href="/" class="brand">Lex</a>
+  <nav>
+    <a href="/manifesto">Manifesto</a>
+    <a href="/#live">Live</a>
+    <a href="/#packages">Packages</a>
+    <a href="https://github.com/alpibrusl">GitHub</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap article-wrap">
+
+    <a href="/" class="back">← lexlang.org</a>
+
+    <p class="eyebrow">Manifesto</p>
+    <h1>Trust Without Comprehension</h1>
+    <p class="subtitle">A case for tools designed for AI, not adapted from humans</p>
+    <p class="meta">Alfonso Sastre &mdash; May 25, 2026</p>
+
+    <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+            <li><a href="#shape-of-a-tool">The Shape of a Tool</a></li>
+            <li><a href="#shoulders-of-giants">On the Shoulders of Giants</a></li>
+            <li><a href="#mismatch">The Mismatch</a></li>
+            <li><a href="#trust-without-comprehension">Trust Without Comprehension</a></li>
+            <li><a href="#obvious-objection">The Obvious Objection</a></li>
+            <li><a href="#worked-example">A Worked Example</a></li>
+            <li><a href="#beyond-code">Beyond Code</a></li>
+            <li><a href="#division-of-labor">The Division of Labor</a></li>
+            <li><a href="#wager">The Wager</a></li>
+        </ol>
     </nav>
 
-    <main>
-
-    <!-- Manifesto Hero -->
-    <section class="manifesto-hero">
-        <div class="container">
-            <p class="manifesto-eyebrow">Manifesto</p>
-            <h1 class="manifesto-title">Trust Without Comprehension</h1>
-            <p class="manifesto-subtitle">A case for tools designed for AI, not adapted from humans</p>
-            <p class="manifesto-meta">Alfonso Sastre &mdash; May 25, 2026</p>
-            <nav class="lang-switcher" aria-label="Language switcher">
-                <a href="/manifesto" class="active">EN</a>
-                <span class="sep">·</span>
-                <a href="/manifesto-fr">FR</a>
-                <span class="sep">·</span>
-                <a href="/manifesto-de">DE</a>
-                <span class="sep">·</span>
-                <a href="/manifesto-pt">PT</a>
-            </nav>
-        </div>
+    <section id="shape-of-a-tool">
+        <h2>I. The Shape of a Tool</h2>
+        <p>Every tool carries the assumptions of its maker. The hammer assumes a wrist. The keyboard assumes ten fingers and the ability to hold a thought long enough to spell it out. The spreadsheet assumes a mind that can hold a grid and navigate it cell by cell. These constraints are not bugs — they are the honest acknowledgment that tools are made by humans, for humans, shaped around human perception and human memory.</p>
+        <p>We are now building agents that can reason, write, plan, and act. And almost without exception, we are handing them human tools.</p>
+        <p>This is the central error of the current moment. Not a mistake in any single product or paper — a structural mistake in how we are framing the problem. We are asking agents to be very fast humans, when they could be something else entirely.</p>
     </section>
 
-    <!-- Manifesto Body -->
-    <article class="manifesto-body">
+    <div class="divider">· · ·</div>
 
-        <a href="/" class="manifesto-back">← back to lexlang.org</a>
+    <section id="shoulders-of-giants">
+        <h2>II. On the Shoulders of Giants</h2>
+        <p>Isaac Newton, writing to Robert Hooke in 1675, said: <em>"If I have seen further, it is by standing on the shoulders of giants."</em> The statement is often read as humility. It is also a statement about how knowledge compounds — each generation inherits the accumulated structure of the last and adds to it, rather than rebuilding from nothing.</p>
+        <p>The tools we are handing to agents are those giants. Python, Git, SQL, Jira, Figma — decades of careful thought about how to make computation and coordination tractable for human beings. They deserve respect. They are extraordinary achievements.</p>
+        <p>But inheriting a tool is not the same as being its right user. Newton inherited Galileo's observations and Kepler's laws. He did not inherit Galileo's telescope — he built a better one suited to what he was trying to see.</p>
+        <p class="pullquote">What tool would you build if the user had no hands, no embodied attention span, no need for syntax sugar, and could hold a thousand constraints simultaneously within a single task without forgetting any of them?</p>
+    </section>
 
-        <!-- Table of Contents -->
-        <nav class="toc" aria-label="Table of contents">
-            <h3>Contents</h3>
-            <ol>
-                <li><a href="#shape-of-a-tool">The Shape of a Tool</a></li>
-                <li><a href="#shoulders-of-giants">On the Shoulders of Giants</a></li>
-                <li><a href="#mismatch">The Mismatch</a></li>
-                <li><a href="#trust-without-comprehension">Trust Without Comprehension</a></li>
-                <li><a href="#obvious-objection">The Obvious Objection</a></li>
-                <li><a href="#worked-example">A Worked Example</a></li>
-                <li><a href="#beyond-code">Beyond Code</a></li>
-                <li><a href="#division-of-labor">The Division of Labor</a></li>
-                <li><a href="#wager">The Wager</a></li>
-            </ol>
-        </nav>
+    <div class="divider">· · ·</div>
 
-        <!-- I -->
-        <section class="manifesto-section" id="shape-of-a-tool">
-            <h2>I. The Shape of a Tool</h2>
-            <p>Every tool carries the assumptions of its maker. The hammer assumes a wrist. The keyboard assumes ten fingers and the ability to hold a thought long enough to spell it out. The spreadsheet assumes a mind that can hold a grid and navigate it cell by cell. These constraints are not bugs — they are the honest acknowledgment that tools are made by humans, for humans, shaped around human perception and human memory.</p>
-            <p>We are now building agents that can reason, write, plan, and act. And almost without exception, we are handing them human tools.</p>
-            <p>This is the central error of the current moment. Not a mistake in any single product or paper — a structural mistake in how we are framing the problem. We are asking agents to be very fast humans, when they could be something else entirely.</p>
-        </section>
+    <section id="mismatch">
+        <h2>III. The Mismatch</h2>
+        <p>Consider what we ask of agents in the domain of software.</p>
+        <p>We ask them to write in languages with decades of syntax accumulated for human readability — indentation, named keywords, implicit operator precedence, liberal whitespace conventions. We ask them to manage version control through line-based diffs, where the unit of identity is a line of text rather than a named, typed, semantically stable unit of meaning. We ask them to navigate codebases of millions of lines, most of which are not the answer to any question the agent needs to ask. A semantic diff that says <em>"the type of <code>fn execute</code> changed from <code>[io] → Result[A, B]</code> to <code>[io, net] → Result[A, B]</code>"</em> tells an agent something. A diff that says <em>"line 47 changed"</em> tells a human something. We give them the second.</p>
+        <p>We ask them to read the entire codebase to build a mental model that they will discard at the end of the conversation, and rebuild from scratch the next call. Humans build mental models because we have to — we cannot hold the structure of a million-line system in working memory all at once, and the model amortizes the cost of comprehension across sessions. An agent has no working memory across sessions. Every conversation is the first. The right interface for an agent is not a codebase to read but a contract to satisfy.</p>
+        <p>We ask them, above all, to trust themselves through comprehension. Read the code. Understand the spec. Interpret the brief. But comprehension is a <em>human strategy</em> for building trust in the presence of ambiguity. It is not the only strategy. And for an agent — fast, tireless, but without continuous memory and prone to confident hallucination — it is not even the best one.</p>
+    </section>
 
-        <div class="manifesto-divider">· · ·</div>
+    <div class="divider">· · ·</div>
 
-        <!-- II -->
-        <section class="manifesto-section" id="shoulders-of-giants">
-            <h2>II. On the Shoulders of Giants</h2>
-            <p>Isaac Newton, writing to Robert Hooke in 1675, said: <em>"If I have seen further, it is by standing on the shoulders of giants."</em> The statement is often read as humility. It is also a statement about how knowledge compounds — each generation inherits the accumulated structure of the last and adds to it, rather than rebuilding from nothing.</p>
-            <p>The tools we are handing to agents are those giants. Python, Git, SQL, Jira, Figma — decades of careful thought about how to make computation and coordination tractable for human beings. They deserve respect. They are extraordinary achievements.</p>
-            <p>But inheriting a tool is not the same as being its right user. Newton inherited Galileo's observations and Kepler's laws. He did not inherit Galileo's telescope — he built a better one suited to what he was trying to see.</p>
-            <p class="manifesto-pullquote">What tool would you build if the user had no hands, no embodied attention span, no need for syntax sugar, and could hold a thousand constraints simultaneously within a single task without forgetting any of them?</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- III -->
-        <section class="manifesto-section" id="mismatch">
-            <h2>III. The Mismatch</h2>
-            <p>Consider what we ask of agents in the domain of software.</p>
-            <p>We ask them to write in languages with decades of syntax accumulated for human readability — indentation, named keywords, implicit operator precedence, liberal whitespace conventions. We ask them to manage version control through line-based diffs, where the unit of identity is a line of text rather than a named, typed, semantically stable unit of meaning. We ask them to navigate codebases of millions of lines, most of which are not the answer to any question the agent needs to ask. A semantic diff that says <em>"the type of <code>fn execute</code> changed from <code>[io] → Result[A, B]</code> to <code>[io, net] → Result[A, B]</code>"</em> tells an agent something. A diff that says <em>"line 47 changed"</em> tells a human something. We give them the second.</p>
-            <p>We ask them to read the entire codebase to build a mental model that they will discard at the end of the conversation, and rebuild from scratch the next call. Humans build mental models because we have to — we cannot hold the structure of a million-line system in working memory all at once, and the model amortizes the cost of comprehension across sessions. An agent has no working memory across sessions. Every conversation is the first. The right interface for an agent is not a codebase to read but a contract to satisfy.</p>
-            <p>We ask them, above all, to trust themselves through comprehension. Read the code. Understand the spec. Interpret the brief. But comprehension is a <em>human strategy</em> for building trust in the presence of ambiguity. It is not the only strategy. And for an agent — fast, tireless, but without continuous memory and prone to confident hallucination — it is not even the best one.</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- IV -->
-        <section class="manifesto-section" id="trust-without-comprehension">
-            <h2>IV. Trust Without Comprehension</h2>
-            <div class="manifesto-thesis">
-                <p>The thesis of this essay is that comprehension is not the only basis for trust, and that agent-native tools should be designed around a different one: verification.</p>
-            </div>
-            <p>By <em>comprehension</em> I mean specifically the requirement that a human read and mentally simulate a system in order to vouch for it. Conceptual understanding of what the system does and why remains essential; what changes is whether that line-by-line interpretive validation is the substrate on which mechanical trust is built.</p>
-            <p>The right question is not <em>"how do we make Python better for agents?"</em> It is: if you were designing a programming language for an agent — not for a human to write, not for a human to read, but for an agent to generate and verify — what would you keep, and what would you discard?</p>
-            <p>You would keep types, because types are machine-verifiable constraints. You would keep algebraic data structures, because they make illegal states unrepresentable. You would keep effects, not as a documentation convention but as a formal declaration: this function may touch the network; this one may not. An agent that generates a function with a <code>[net]</code> effect row does not need to read the function body to know it touches the network. The type system tells it. The type system tells the caller. <strong>Trust without comprehension.</strong></p>
-            <p>You would discard line-based version control, because lines are a human serialization format. The meaningful unit of a program is not a line — it is a function, a type, a module. Content-addressed AST nodes, stable identities across reformats, semantic versioning of functions not files — these are the primitives of version control designed for an agent.</p>
-            <p>You would discard large codebases as the unit of specification. The right interface for an agent is a small formal specification — a type signature, a set of examples, a set of properties — from which it can generate a correct implementation. Not a reference implementation to imitate, but a contract to satisfy.</p>
-            <p>And you would add <strong>attestation</strong>. Not review — attestation. An agent can generate code; a type checker can verify it; a test harness can run it; a sandbox can execute it with constrained effects; an append-only log can record exactly what happened, signed, content-addressed, tamper-evident. This chain is not understood — it is verified, at every link.</p>
-            <p>The substrate is not human-hostile. It supports projections — readable source views, narrative summaries, line-style diffs — derived from the same canonical form. What changes is which representation is load-bearing for trust.</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- V -->
-        <section class="manifesto-section" id="obvious-objection">
-            <h2>V. The Obvious Objection</h2>
-            <p>The reflexive response to "trust without comprehension" is: <em>but someone still has to understand the system when it breaks.</em> When a regulator asks why an automated decision was made, when an engineer is paged at 3am, when a customer demands accountability — "the type checker said it was fine" is not a sufficient answer.</p>
-            <p>This is the strongest objection to the entire framing, and it deserves a direct response.</p>
-            <p>It is correct that humans bear residual responsibility, and that responsibility cannot be discharged by machinery alone. But notice what the objection actually asks for. It does not ask for the human to <em>re-derive</em> the system's behavior from first principles. It asks for the human to be able to <em>audit</em> the system after the fact: what was the input, what was the output, what constraints were checked, what effects were declared, what was logged.</p>
-            <p>Comprehension-based trust requires the human to hold the entire system in their head, in advance, in order to vouch for it. Verification-based trust requires the human to hold the system's <em>constraints</em> in their head — the spec, the effect set, the policy — and rely on tooling to enforce them. The audit surface is smaller. The review is sharper. The human is engaged where their judgment matters: at the spec, the policy, the trace — not at every line of every function body.</p>
-            <p>This is not the abolition of human oversight. It is the relocation of human oversight to the layer where it actually adds value, and the delegation of the rest to mechanisms that scale.</p>
-            <p>Verification scales cleanly for formal properties — types, effects, capabilities, invariants. It scales partially for testable behaviors, where well-chosen properties and examples can stand in for full specification. It scales poorly for aesthetic or intentional properties, where human judgment remains the only available oracle. The argument here is not that verification replaces judgment everywhere — only that it should replace comprehension wherever it can, so that judgment is reserved for the questions only humans can answer.</p>
-            <p>The current paradigm asks humans to comprehend everything and trust nothing. The agent-native paradigm asks humans to specify what matters and verify that it holds. The first is exhausting and increasingly impossible at the scale agents are starting to operate. The second is how every other mature engineering discipline already works — civil engineers do not personally verify each rivet; they specify the load and rely on the certification chain.</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- VI -->
-        <section class="manifesto-section" id="worked-example">
-            <h2>VI. A Worked Example</h2>
-            <p>The argument above is conceptual. Here is a concrete artifact.</p>
-            <p>I built <code>lex-code</code>, an AI coding assistant written entirely in Lex — a programming language designed under the discipline of this essay. The system prompts for each agent mode (build, spec, test, review) are about five lines of Lex each. The agent that generated the implementation worked from a compact language reference and the role description, with no existing Lex codebase to imitate.</p>
-            <p>The orchestrator manages parallel multi-agent execution with effect-typed concurrency. One signature reads:</p>
-            <pre class="manifesto-code">fn run_parallel(...) -> [env, concurrent, net, llm, io, proc, sql, fs_write, time] MultiResult</pre>
-            <p>The agent figured that signature out from the spec. It composed the effect rows correctly across parallel sub-agents. It threaded <code>Result</code> and <code>Option</code> through every error path. It distinguished construction-as-data (the agent definition) from execution-as-effect (the agent invocation), without being told to.</p>
-            <p>This is what <em>"designed for an agent to generate"</em> looks like in practice: the substrate carries the constraints; the model fills the bodies; the type system verifies the result. The model is not trusted because it was understood. It is trusted because what it produced was verified — by the type checker, by the spec checker, by the capability gate, by the trace. <strong>Trust without comprehension, end to end.</strong></p>
-            <p>The artifact is not the point. The point is that the artifact exists, was produced under the discipline the essay describes, and behaves the way the essay predicts. The substrate did the work.</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- VII -->
-        <section class="manifesto-section" id="beyond-code">
-            <h2>VII. Beyond Code</h2>
-            <p>The argument generalizes beyond programming languages, though I will not develop that case fully here. Briefly:</p>
-            <p>Every domain of human knowledge work has been organized around human cognitive constraints. The sprint is two weeks because human attention spans cannot sustain longer cycles without a visible checkpoint. The marketing brief is a document because humans need narrative to coordinate around ambiguity. The product roadmap is a slide deck because humans need visual hierarchy to establish priority. None of these constraints apply to agents.</p>
-            <p>The principle has the same shape in every domain: replace <strong>comprehension</strong> with <strong>verification</strong>, replace <strong>human-readable artifacts</strong> with <strong>machine-checkable specifications</strong>, replace <strong>coordination through meeting</strong> with <strong>coordination through protocol</strong>. In code, that means types, attestation, and content-addressed identity. In contract review, it would mean formal representations of obligations that an agent can check rather than legal prose a partner has to read. In compliance, it would mean policy expressed as executable constraints rather than PDFs interpreted by audit teams. In experiment design, it would mean preregistered protocols an agent can validate against rather than methods sections humans have to trust.</p>
-            <p>What stays constant across all of these is what does <em>not</em> change: humans still set the goals, humans still bear the responsibility, humans still decide what is worth verifying. The principle does not displace human judgment. It relocates the surface on which judgment is exercised — from comprehending the system to specifying what the system must do.</p>
-            <p>There is a deeper wager underneath this one: that more of human coordination can be expressed as constraints, protocols, and machine-checkable specifications than current practice assumes. That is the controversial claim, and the case for it is for another essay.</p>
-            <p>The point of this one is more modest: that the principle is sound, that the worked example exists, and that the move is the same wherever an agent meets a substrate built for someone else.</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- VIII -->
-        <section class="manifesto-section" id="division-of-labor">
-            <h2>VIII. The Division of Labor</h2>
-            <p>None of this is an argument against humans. It is an argument for a cleaner separation of concerns.</p>
-            <div class="division-item">
-                <strong>Humans set goals.</strong>
-                <p>Humans decide what is worth building and why. Humans bear responsibility for consequences. These are not tasks to automate — they are tasks that require the particular kind of moral weight that only a person can carry.</p>
-            </div>
-            <div class="division-item">
-                <strong>Agents execute.</strong>
-                <p>Agents generate, verify, compose, test, deploy, monitor. These are tasks where human cognitive constraints — working memory, attention span, the need for readable syntax, the tolerance for line-based diffs — are friction, not features.</p>
-            </div>
-            <p>The transition requires new primitives. Languages whose specifications fit in a small formal grammar, not a thousand-page reference manual. Version control that operates on semantic units, not text lines. Specification formats that are machine-checkable, not human-interpreted. Attestation systems that produce trust without requiring comprehension at every step. Orchestration protocols that agents can reason about natively, not by parsing human-facing APIs.</p>
-            <p>Some of these exist in early form. The field of agent-native tooling is roughly where operating systems were in 1970: the ideas are nascent, the implementations are rough, the community is small. The opportunity is proportionate.</p>
-        </section>
-
-        <div class="manifesto-divider">· · ·</div>
-
-        <!-- IX -->
-        <section class="manifesto-section" id="wager">
-            <h2>IX. The Wager</h2>
-            <p>The current moment is a wager.</p>
-            <p>One bet is that the right strategy is to make existing human tools incrementally better for agents — better context windows, better retrieval, better prompt engineering, better fine-tuning on existing codebases. This bet says the shape of the tool is fine; the agent just needs to get better at using it.</p>
-            <p>The other bet is that <strong>the shape of the tool matters</strong>. That there are capabilities — in code generation, in coordinated action across complex systems — that are not reachable by an agent using a hammer, however capable the agent becomes. That the right move is not to train agents to read Git history better, but to give them version control that was never designed around human readability in the first place.</p>
-            <p>The second bet is harder. It requires building new infrastructure rather than instrumenting existing infrastructure. It requires convincing communities built around human tools that the tools themselves, not their users, are the variable to change. It requires accepting a period where the new tools are immature — a valley between <em>"human tools, used by AI"</em> and <em>"agent-native tools, mature enough to rely on."</em></p>
-            <p>But the second bet is also the one consistent with the actual nature of the shift. Agents are not faster humans. They have different strengths, different failure modes, different requirements for trust and verification. Giving them tools designed for human cognition is not a neutral choice — it is a choice to leave most of their potential unrealized, and to ask humans to comprehend at a scale that comprehension can no longer reach.</p>
-            <p>We are standing on the shoulders of giants. Now we build the next layer — not against what the giants built, but for a different writer, a different reader, a different basis for trust.</p>
-            <p class="manifesto-pullquote">Comprehension was a strategy. It is not the only one.</p>
-            <p style="margin-top: 2rem; color: var(--text-light); font-style: italic;">— Alfonso Sastre, May 25, 2026</p>
-        </section>
-
-    </article>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3 class="logo-text">alpibru</h3>
-                    <p>Open infrastructure for AI agent ecosystems.</p>
-                    <p class="footer-meta">EUPL-1.2 · Built in the EU</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Open Source</h4>
-                        <a href="https://github.com/alpibrusl/agentspec" target="_blank" rel="noopener">AgentSpec</a>
-                        <a href="https://github.com/alpibrusl/noether" target="_blank" rel="noopener">Noether</a>
-                        <a href="https://github.com/alpibrusl/caloron-noether" target="_blank" rel="noopener">Caloron-Noether</a>
-                        <a href="https://github.com/alpibrusl/acli" target="_blank" rel="noopener">ACLI</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Documentation</h4>
-                        <a href="https://alpibrusl.github.io/agentspec/" target="_blank" rel="noopener">AgentSpec Docs</a>
-                        <a href="https://alpibrusl.github.io/noether/" target="_blank" rel="noopener">Noether Docs</a>
-                        <a href="https://alpibrusl.github.io/caloron-noether/" target="_blank" rel="noopener">Caloron-Noether Docs</a>
-                        <a href="https://alpibrusl.github.io/acli/" target="_blank" rel="noopener">ACLI Docs</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Alpibru</h4>
-                        <a href="/">Home</a>
-                        <a href="/manifesto">Manifesto</a>
-                        <a href="/#contact">Contact</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <a href="https://github.com/alpibrusl" target="_blank" rel="noopener">GitHub</a>
-                        <a href="/#contact">Contact Form</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="copyright-year">2026</span> Alpibru. All rights reserved.</p>
-            </div>
+    <section id="trust-without-comprehension">
+        <h2>IV. Trust Without Comprehension</h2>
+        <div class="thesis">
+            <p>The thesis of this essay is that comprehension is not the only basis for trust, and that agent-native tools should be designed around a different one: verification.</p>
         </div>
-    </footer>
+        <p>By <em>comprehension</em> I mean specifically the requirement that a human read and mentally simulate a system in order to vouch for it. Conceptual understanding of what the system does and why remains essential; what changes is whether that line-by-line interpretive validation is the substrate on which mechanical trust is built.</p>
+        <p>The right question is not <em>"how do we make Python better for agents?"</em> It is: if you were designing a programming language for an agent — not for a human to write, not for a human to read, but for an agent to generate and verify — what would you keep, and what would you discard?</p>
+        <p>You would keep types, because types are machine-verifiable constraints. You would keep algebraic data structures, because they make illegal states unrepresentable. You would keep effects, not as a documentation convention but as a formal declaration: this function may touch the network; this one may not. An agent that generates a function with a <code>[net]</code> effect row does not need to read the function body to know it touches the network. The type system tells it. The type system tells the caller. <strong>Trust without comprehension.</strong></p>
+        <p>You would discard line-based version control, because lines are a human serialization format. The meaningful unit of a program is not a line — it is a function, a type, a module. Content-addressed AST nodes, stable identities across reformats, semantic versioning of functions not files — these are the primitives of version control designed for an agent.</p>
+        <p>You would discard large codebases as the unit of specification. The right interface for an agent is a small formal specification — a type signature, a set of examples, a set of properties — from which it can generate a correct implementation. Not a reference implementation to imitate, but a contract to satisfy.</p>
+        <p>And you would add <strong>attestation</strong>. Not review — attestation. An agent can generate code; a type checker can verify it; a test harness can run it; a sandbox can execute it with constrained effects; an append-only log can record exactly what happened, signed, content-addressed, tamper-evident. This chain is not understood — it is verified, at every link.</p>
+        <p>The substrate is not human-hostile. It supports projections — readable source views, narrative summaries, line-style diffs — derived from the same canonical form. What changes is which representation is load-bearing for trust.</p>
+    </section>
 
-    <script>
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    <div class="divider">· · ·</div>
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+    <section id="obvious-objection">
+        <h2>V. The Obvious Objection</h2>
+        <p>The reflexive response to "trust without comprehension" is: <em>but someone still has to understand the system when it breaks.</em> When a regulator asks why an automated decision was made, when an engineer is paged at 3am, when a customer demands accountability — "the type checker said it was fine" is not a sufficient answer.</p>
+        <p>This is the strongest objection to the entire framing, and it deserves a direct response.</p>
+        <p>It is correct that humans bear residual responsibility, and that responsibility cannot be discharged by machinery alone. But notice what the objection actually asks for. It does not ask for the human to <em>re-derive</em> the system's behavior from first principles. It asks for the human to be able to <em>audit</em> the system after the fact: what was the input, what was the output, what constraints were checked, what effects were declared, what was logged.</p>
+        <p>Comprehension-based trust requires the human to hold the entire system in their head, in advance, in order to vouch for it. Verification-based trust requires the human to hold the system's <em>constraints</em> in their head — the spec, the effect set, the policy — and rely on tooling to enforce them. The audit surface is smaller. The review is sharper. The human is engaged where their judgment matters: at the spec, the policy, the trace — not at every line of every function body.</p>
+        <p>This is not the abolition of human oversight. It is the relocation of human oversight to the layer where it actually adds value, and the delegation of the rest to mechanisms that scale.</p>
+        <p>Verification scales cleanly for formal properties — types, effects, capabilities, invariants. It scales partially for testable behaviors, where well-chosen properties and examples can stand in for full specification. It scales poorly for aesthetic or intentional properties, where human judgment remains the only available oracle. The argument here is not that verification replaces judgment everywhere — only that it should replace comprehension wherever it can, so that judgment is reserved for the questions only humans can answer.</p>
+        <p>The current paradigm asks humans to comprehend everything and trust nothing. The agent-native paradigm asks humans to specify what matters and verify that it holds. The first is exhausting and increasingly impossible at the scale agents are starting to operate. The second is how every other mature engineering discipline already works — civil engineers do not personally verify each rivet; they specify the load and rely on the certification chain.</p>
+    </section>
 
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    <div class="divider">· · ·</div>
+
+    <section id="worked-example">
+        <h2>VI. A Worked Example</h2>
+        <p>The argument above is conceptual. Here is a concrete artifact.</p>
+        <p>I built <code>lex-code</code>, an AI coding assistant written entirely in Lex — a programming language designed under the discipline of this essay. The system prompts for each agent mode (build, spec, test, review) are about five lines of Lex each. The agent that generated the implementation worked from a compact language reference and the role description, with no existing Lex codebase to imitate.</p>
+        <p>The orchestrator manages parallel multi-agent execution with effect-typed concurrency. One signature reads:</p>
+        <pre><code>fn run_parallel(...) -> [env, concurrent, net, llm, io, proc, sql, fs_write, time] MultiResult</code></pre>
+        <p>The agent figured that signature out from the spec. It composed the effect rows correctly across parallel sub-agents. It threaded <code>Result</code> and <code>Option</code> through every error path. It distinguished construction-as-data (the agent definition) from execution-as-effect (the agent invocation), without being told to.</p>
+        <p>This is what <em>"designed for an agent to generate"</em> looks like in practice: the substrate carries the constraints; the model fills the bodies; the type system verifies the result. The model is not trusted because it was understood. It is trusted because what it produced was verified — by the type checker, by the spec checker, by the capability gate, by the trace. <strong>Trust without comprehension, end to end.</strong></p>
+        <p>The artifact is not the point. The point is that the artifact exists, was produced under the discipline the essay describes, and behaves the way the essay predicts. The substrate did the work.</p>
+    </section>
+
+    <div class="divider">· · ·</div>
+
+    <section id="beyond-code">
+        <h2>VII. Beyond Code</h2>
+        <p>The argument generalizes beyond programming languages, though I will not develop that case fully here. Briefly:</p>
+        <p>Every domain of human knowledge work has been organized around human cognitive constraints. The sprint is two weeks because human attention spans cannot sustain longer cycles without a visible checkpoint. The marketing brief is a document because humans need narrative to coordinate around ambiguity. The product roadmap is a slide deck because humans need visual hierarchy to establish priority. None of these constraints apply to agents.</p>
+        <p>The principle has the same shape in every domain: replace <strong>comprehension</strong> with <strong>verification</strong>, replace <strong>human-readable artifacts</strong> with <strong>machine-checkable specifications</strong>, replace <strong>coordination through meeting</strong> with <strong>coordination through protocol</strong>. In code, that means types, attestation, and content-addressed identity. In contract review, it would mean formal representations of obligations that an agent can check rather than legal prose a partner has to read. In compliance, it would mean policy expressed as executable constraints rather than PDFs interpreted by audit teams. In experiment design, it would mean preregistered protocols an agent can validate against rather than methods sections humans have to trust.</p>
+        <p>What stays constant across all of these is what does <em>not</em> change: humans still set the goals, humans still bear the responsibility, humans still decide what is worth verifying. The principle does not displace human judgment. It relocates the surface on which judgment is exercised — from comprehending the system to specifying what the system must do.</p>
+        <p>There is a deeper wager underneath this one: that more of human coordination can be expressed as constraints, protocols, and machine-checkable specifications than current practice assumes. That is the controversial claim, and the case for it is for another essay.</p>
+        <p>The point of this one is more modest: that the principle is sound, that the worked example exists, and that the move is the same wherever an agent meets a substrate built for someone else.</p>
+    </section>
+
+    <div class="divider">· · ·</div>
+
+    <section id="division-of-labor">
+        <h2>VIII. The Division of Labor</h2>
+        <p>None of this is an argument against humans. It is an argument for a cleaner separation of concerns.</p>
+        <div class="division">
+            <strong>Humans set goals.</strong>
+            <p>Humans decide what is worth building and why. Humans bear responsibility for consequences. These are not tasks to automate — they are tasks that require the particular kind of moral weight that only a person can carry.</p>
+        </div>
+        <div class="division">
+            <strong>Agents execute.</strong>
+            <p>Agents generate, verify, compose, test, deploy, monitor. These are tasks where human cognitive constraints — working memory, attention span, the need for readable syntax, the tolerance for line-based diffs — are friction, not features.</p>
+        </div>
+        <p>The transition requires new primitives. Languages whose specifications fit in a small formal grammar, not a thousand-page reference manual. Version control that operates on semantic units, not text lines. Specification formats that are machine-checkable, not human-interpreted. Attestation systems that produce trust without requiring comprehension at every step. Orchestration protocols that agents can reason about natively, not by parsing human-facing APIs.</p>
+        <p>Some of these exist in early form. The field of agent-native tooling is roughly where operating systems were in 1970: the ideas are nascent, the implementations are rough, the community is small. The opportunity is proportionate.</p>
+    </section>
+
+    <div class="divider">· · ·</div>
+
+    <section id="wager">
+        <h2>IX. The Wager</h2>
+        <p>The current moment is a wager.</p>
+        <p>One bet is that the right strategy is to make existing human tools incrementally better for agents — better context windows, better retrieval, better prompt engineering, better fine-tuning on existing codebases. This bet says the shape of the tool is fine; the agent just needs to get better at using it.</p>
+        <p>The other bet is that <strong>the shape of the tool matters</strong>. That there are capabilities — in code generation, in coordinated action across complex systems — that are not reachable by an agent using a hammer, however capable the agent becomes. That the right move is not to train agents to read Git history better, but to give them version control that was never designed around human readability in the first place.</p>
+        <p>The second bet is harder. It requires building new infrastructure rather than instrumenting existing infrastructure. It requires convincing communities built around human tools that the tools themselves, not their users, are the variable to change. It requires accepting a period where the new tools are immature — a valley between <em>"human tools, used by AI"</em> and <em>"agent-native tools, mature enough to rely on."</em></p>
+        <p>But the second bet is also the one consistent with the actual nature of the shift. Agents are not faster humans. They have different strengths, different failure modes, different requirements for trust and verification. Giving them tools designed for human cognition is not a neutral choice — it is a choice to leave most of their potential unrealized, and to ask humans to comprehend at a scale that comprehension can no longer reach.</p>
+        <p>We are standing on the shoulders of giants. Now we build the next layer — not against what the giants built, but for a different writer, a different reader, a different basis for trust.</p>
+        <p class="pullquote">Comprehension was a strategy. It is not the only one.</p>
+        <p class="signoff">— Alfonso Sastre, May 25, 2026</p>
+    </section>
+
+</div>
+</main>
+
+<footer><div class="wrap" style="max-width:980px">
+  Lex is built by <a href="https://alpibru.com">Alpibru</a> · EUPL-1.2 · EU-built, vendor-neutral ·
+  <a href="https://github.com/alpibrusl">github.com/alpibrusl</a> ·
+  <a href="/llms.txt">llms.txt</a>
+</div></footer>
 </body>
 </html>
