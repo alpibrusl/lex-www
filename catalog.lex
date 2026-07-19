@@ -91,6 +91,12 @@ fn packages() -> List[Pkg] {
     { name: "lex-crypto", layer: Library, status: Beta, public: true,
       summary: "Crypto for Lex: JWT, OAuth2/PKCE, Argon2id, sealed cookies, webhook verify, TOTP.",
       hero: "" },
+    { name: "lex-device-identity", layer: Library, status: Runnable, public: true,
+      summary: "Platform-signed device certificates + offline signed-reading verification — the tamper-evident trail starts at the device.",
+      hero: "" },
+    { name: "lex-slim", layer: Library, status: Alpha, public: true,
+      summary: "Lex client for SLIM (AGNTCY) multicast agent messaging — multi-party agent comms via a SLIM-node sidecar bridge.",
+      hero: "" },
 
     # ── Agents & orchestration ────────────────────────────────────────────────
     { name: "lex-agent", layer: Agents, status: Runnable, public: true,
@@ -101,6 +107,9 @@ fn packages() -> List[Pkg] {
       hero: "" },
     { name: "lex-code", layer: Agents, status: Runnable, public: true,
       summary: "Lex-native coding assistant built entirely in the Lex ecosystem.",
+      hero: "" },
+    { name: "lex-arena", layer: Agents, status: Runnable, public: true,
+      summary: "Where Lex agents play: a lobby, N-player games, and the Magentic Bazaar — a governed agent marketplace, replay-verified by lex-games.",
       hero: "" },
     { name: "lex-loom", layer: Agents, status: Beta, public: true,
       summary: "Multi-agent sprint cycles built on lex-soft (design stage).",
