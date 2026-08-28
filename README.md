@@ -66,3 +66,8 @@ New here? Read the [manifesto](https://lexlang.org) · install [lex-lang](https:
 
 _This file is generated from `catalog.lex` by `generate.lex` — do not edit by hand._
 
+## License
+
+Copyright (c) 2026 lex-www contributors.
+
+Licensed under the [EUPL-1.2](LICENSE) — the European Union Public Licence, as used across the `lex-*` ecosystem.
