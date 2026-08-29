@@ -134,6 +134,18 @@ fn readme() -> [io] Unit {
     "**", solo_note(), "**\n\n",
     "New here? Read the [manifesto](", cat.canonical(), ") · install [lex-lang](https://github.com/", cat.org(), "/lex-lang/releases).\n\n",
     all_sections(), "\n\n",
-    "_This file is generated from `catalog.lex` by `generate.lex` — do not edit by hand._\n"
+    "_This file is generated from `catalog.lex` by `generate.lex` — do not edit by hand._\n",
+    license_section()
   ], ""))
+}
+
+# The licence notice belongs in the generated README, not appended to it by
+# hand — 4c1226c did the latter, and the anti-drift check has been failing
+# ever since, because README.md's own last line says not to.
+fn license_section() -> Str {
+  str.join([
+    "\n## License\n\n",
+    "Copyright (c) 2026 lex-www contributors.\n\n",
+    "Licensed under the [EUPL-1.2](LICENSE) — the European Union Public Licence, as used across the `lex-*` ecosystem.\n"
+  ], "")
 }
