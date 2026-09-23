@@ -2,8 +2,10 @@
 
 The Lex front door is a static site **generated from `catalog.lex`**. Edit only
 `catalog.lex`; `make gen` regenerates `llms.txt`, `README.md`, and the package
-list inside `index.html`. CI (`.github/workflows/ci.yml`) fails if a committed
-surface drifts from the catalog, or if the catalog drifts from GitHub reality.
+links inside `index.html`. CI (`.github/workflows/ci.yml`) fails if a committed
+surface drifts from the catalog. The package list itself is two live links
+(GitHub org search, the hub's lex-official registry), not a maintained list,
+so there is nothing to keep in sync with GitHub reality anymore.
 
 ## Local
 

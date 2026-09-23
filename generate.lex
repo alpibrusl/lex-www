@@ -11,83 +11,25 @@ import "std.io" as io
 
 import "std.str" as str
 
-import "std.list" as list
-
 import "./catalog" as cat
-
-fn layer_rank(l :: cat.Layer) -> Int {
-  match l {
-    Substrate => 0,
-    Library => 1,
-    Agents => 2,
-    Finance => 3,
-    Energy => 4,
-    Robotics => 5,
-  }
-}
-
-fn layer_title(l :: cat.Layer) -> Str {
-  match l {
-    Substrate => "Substrate — the language, runtime, and registry",
-    Library => "Libraries — horizontal building blocks",
-    Agents => "Agents & orchestration",
-    Finance => "Finance",
-    Energy => "Energy & EV",
-    Robotics => "Robotics",
-  }
-}
-
-fn status_label(s :: cat.Status) -> Str {
-  match s {
-    Runnable => "runnable",
-    Beta => "beta",
-    Alpha => "alpha",
-    Idea => "idea",
-  }
-}
-
-fn layers() -> List[cat.Layer] {
-  [Substrate, Library, Agents, Finance, Energy, Robotics]
-}
-
-# Only public packages reach the public surfaces (so no broken links to private
-# repos); the catalog still tracks private ones for internal completeness.
-fn in_layer(target :: cat.Layer) -> (cat.Pkg) -> Bool {
-  fn (p :: cat.Pkg) -> Bool {
-    if p.public { layer_rank(p.layer) == layer_rank(target) } else { false }
-  }
-}
-
-fn repo_url(p :: cat.Pkg) -> Str {
-  str.join(["https://github.com/", cat.org(), "/", p.name], "")
-}
-
-# "- [lex-os](url) — summary  _(runnable)_"  (private packages get a marker)
-fn pkg_md(p :: cat.Pkg) -> Str {
-  let vis := if p.public { "" } else { " · _private_" }
-  str.join(["- [", p.name, "](", repo_url(p), ") — ", p.summary, "  _(", status_label(p.status), vis, ")_"], "")
-}
-
-fn section_md(l :: cat.Layer) -> Str {
-  let rows := list.map(list.filter(cat.packages(), in_layer(l)), pkg_md)
-  if list.is_empty(rows) {
-    ""
-  } else {
-    str.join(["## ", layer_title(l), "\n\n", str.join(rows, "\n")], "")
-  }
-}
-
-fn all_sections() -> Str {
-  let secs := list.filter(list.map(layers(), section_md), fn (s :: Str) -> Bool { str.is_empty(s) == false })
-  str.join(secs, "\n\n")
-}
 
 fn tagline() -> Str {
   "Lex is the substrate for software you don't fully trust: effects are part of the type, so what code is allowed to do is checked before it runs and re-checked at runtime — from sandboxing a function an LLM just wrote up to bounding what a learned policy may do to a robot."
 }
 
 fn solo_note() -> Str {
-  "Alpibru is one founder and agentic AI. The breadth below — a language, a runtime, a registry, and production stacks across finance, energy, and robotics — is the demonstration: it is possible because trust here is mechanical (typed effects, tests, tamper-evident attestation), not headcount."
+  "Alpibru is one founder and agentic AI. The breadth here — a language, a runtime, a registry, and production stacks across finance, energy, and robotics — is the demonstration: it is possible because trust here is mechanical (typed effects, tests, tamper-evident attestation), not headcount."
+}
+
+# The package list is two live links, not a maintained list: GitHub's own org
+# search always reflects what's actually public, and the hub shows what's
+# actually installable. Either one goes stale the moment code ships elsewhere
+# without this repo being edited — so nothing here restates them.
+fn packages_md() -> Str {
+  str.join([
+    "- [Browse lex-* repos on GitHub](", cat.github_packages_url(), ") — every public package, always current\n",
+    "- [Browse the lex-official registry](", cat.hub_url(), ") — what's actually published and installable"
+  ], "")
 }
 
 # ── Surfaces ─────────────────────────────────────────────────────────────────
@@ -99,32 +41,20 @@ fn llms() -> [io] Unit {
     "Manifesto: ", cat.canonical(), "/manifesto\n",
     "Install the toolchain: https://github.com/", cat.org(), "/lex-lang/releases\n\n",
     "## Packages\n\n",
-    all_sections(), "\n"
+    packages_md(), "\n"
   ], ""))
 }
 
 # ── HTML fragment (injected into index.html between markers) ─────────────────
-fn pkg_html(p :: cat.Pkg) -> Str {
-  str.join([
-    "      <li><a href=\"", repo_url(p), "\">", p.name, "</a>",
-    "<span class=\"st st-", status_label(p.status), "\">", status_label(p.status), "</span>",
-    "<p>", p.summary, "</p></li>"
-  ], "")
-}
-
-fn section_html(l :: cat.Layer) -> Str {
-  let rows := list.map(list.filter(cat.packages(), in_layer(l)), pkg_html)
-  if list.is_empty(rows) {
-    ""
-  } else {
-    str.join(["  <section class=\"layer\">\n    <h3>", layer_title(l), "</h3>\n    <ul class=\"pkgs\">\n",
-              str.join(rows, "\n"), "\n    </ul>\n  </section>"], "")
-  }
-}
-
 fn packages_html() -> [io] Unit {
-  let secs := list.filter(list.map(layers(), section_html), fn (s :: Str) -> Bool { str.is_empty(s) == false })
-  io.print(str.join(secs, "\n"))
+  io.print(str.join([
+    "  <div class=\"pillars\">\n",
+    "    <a class=\"pillar\" style=\"text-decoration:none;display:block\" href=\"", cat.github_packages_url(), "\">\n",
+    "      <h3>lex-* on GitHub &rarr;</h3><p>Every public package in the org, straight from GitHub's own search — always current, nothing to keep in sync.</p></a>\n",
+    "    <a class=\"pillar\" style=\"text-decoration:none;display:block\" href=\"", cat.hub_url(), "\">\n",
+    "      <h3>lex-official registry &rarr;</h3><p>What's actually published and installable: browse source, versions, and functions on the hub.</p></a>\n",
+    "  </div>"
+  ], ""))
 }
 
 fn readme() -> [io] Unit {
@@ -133,7 +63,8 @@ fn readme() -> [io] Unit {
     tagline(), "\n\n",
     "**", solo_note(), "**\n\n",
     "New here? Read the [manifesto](", cat.canonical(), ") · install [lex-lang](https://github.com/", cat.org(), "/lex-lang/releases).\n\n",
-    all_sections(), "\n\n",
+    "## Packages\n\n",
+    packages_md(), "\n\n",
     "_This file is generated from `catalog.lex` by `generate.lex` — do not edit by hand._\n"
   ], ""))
 }
