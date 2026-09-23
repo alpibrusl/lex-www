@@ -1,7 +1,8 @@
 name: ci
 # Anti-drift: the committed surfaces (llms.txt, README.md, index.html package
-# list) must match what generate.lex produces from catalog.lex, and catalog.lex
-# must match GitHub reality (no public lex-* orphans / mislabeled visibility).
+# links) must match what generate.lex produces from catalog.lex. The package
+# list itself is two live links (GitHub search, the hub registry), so there
+# is no separate "does the list match reality" check to run anymore.
 on:
   pull_request:
   push:
@@ -14,11 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LEX_VERSION: v0.10.7
-      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
       - name: Install lex toolchain
         run: |
           set -euo pipefail
@@ -29,5 +27,3 @@ jobs:
           lex version
       - name: Surfaces in sync with catalog.lex
         run: make verify
-      - name: Catalog matches GitHub reality
-        run: bash scripts/check_reality.sh
