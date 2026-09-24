@@ -251,6 +251,17 @@
       until the one place it doesn't. Wherever that's the actual risk, the fix has the same shape:
       don't try to out-document a wrong prior. Build the thing so being wrong is fast, cheap, and
       unambiguous to find out — and let reasoning the model already has do the rest.</p>
+      <p>It's also not a pattern we invented. DeepMind's <a href="https://www.nature.com/articles/s41586-025-09833-y">AlphaProof and AlphaGeometry 2</a>
+      pair a language model with Lean and a symbolic geometry engine the same way: the model
+      proposes a candidate proof step, sometimes a wrong one, and the checker's answer is
+      immediate and not up for debate — good enough, on real International Mathematical Olympiad
+      problems, for silver-medal-level results, published in <em>Nature</em>.
+      <a href="https://www.nature.com/articles/s41586-023-06924-6">FunSearch</a> runs the
+      identical loop over code instead of proofs: an LLM proposes a program, a plain evaluator
+      function scores it, and only what actually verifies survives to the next generation —
+      enough to find genuinely new constructions in an open combinatorics problem no one had
+      solved. Neither system got better by being told more about the problem. They got better by
+      being wrong quickly, cheaply, and unambiguously, over and over, until they weren't.</p>
       <p>Lex just happens to be the place that fix is load-bearing by design: a type checker and a
       declared acceptance aren't bolted on to catch mistakes after the fact, they're the whole
       mechanism the agent is iterating against, turn by turn. <a href="/manifesto">Trust by
