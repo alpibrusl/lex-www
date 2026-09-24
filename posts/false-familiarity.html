@@ -121,6 +121,15 @@
     <p class="subtitle">An agent doesn't need to know a language to write it. It needs a fast way to find out it's wrong.</p>
     <p class="meta">Alfonso Sastre &mdash; September 24, 2026</p>
 
+    <p>Some context, if this is your first stop here: <a href="/">Lex</a> is a programming
+    language we're building around one idea — a program should be mechanically checkable for
+    what it's allowed to do and whether it does what it claims, not just trusted to be. It has
+    essentially no users outside this project. <a href="https://code.lexlang.org">lex-code</a> is
+    a coding agent built specifically to write it. Picking a language with no real training data
+    and no community wasn't an accident — it was the cleanest way to ask a more general question:
+    what actually happens when you point an LLM at something it has no real experience with, and
+    what, if anything, helps. This post is what we found out.</p>
+
     <nav class="toc" aria-label="Table of contents">
         <h2>Contents</h2>
         <ol>
@@ -153,7 +162,8 @@
       <p>The failure that actually shows up, over and over, watching a model write Lex for the
       first time, isn't ignorance. It's confidence in the wrong thing. Lex looks enough like the
       languages a model has seen billions of lines of — pattern matching, <code>Option</code>
-      types, a functional core — that the model doesn't experience it as unfamiliar at all. It
+      types (a value that might or might not be there), a functional core — that the model
+      doesn't experience it as unfamiliar at all. It
       experiences it as <em>almost Rust</em>, or <em>almost a stricter Python</em>, and reaches
       for whatever the nearest language actually does.</p>
       <div class="thesis"><p>The problem was never that the model didn't know Lex. It's that it
