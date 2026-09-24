@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>False Familiarity — Lex</title>
+<meta name="description" content="An agent doesn't fail at an unfamiliar language by being ignorant of it. It fails by being confidently wrong — pattern-matching onto a language it actually knows. Retrieval doesn't fix that. A fast, cheap way to find out it's wrong does.">
+<meta name="author" content="Alfonso Sastre">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lexlang.org/posts/false-familiarity">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="False Familiarity">
+<meta property="og:description" content="An agent doesn't need to know a language to write it. It needs a fast way to find out it's wrong.">
+<meta property="og:url" content="https://lexlang.org/posts/false-familiarity">
+<meta property="og:site_name" content="Lex">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-24">
+<meta property="article:author" content="Alfonso Sastre">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="False Familiarity">
+<meta name="twitter:description" content="An agent doesn't need to know a language to write it. It needs a fast way to find out it's wrong.">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "False Familiarity",
+  "description": "An agent doesn't fail at an unfamiliar language by being ignorant of it. It fails by being confidently wrong.",
+  "author": {"@type": "Person", "name": "Alfonso Sastre"},
+  "publisher": {"@type": "Organization", "name": "Lex", "url": "https://lexlang.org"},
+  "datePublished": "2026-09-24",
+  "url": "https://lexlang.org/posts/false-familiarity"
+}
+</script>
+
+<style>
+  :root{
+    --bg:#0d0f12; --surface:#15181d; --surface2:#1b1f26; --line:#2a2f38;
+    --fg:#e8eaed; --muted:#9aa3b2; --accent:#7cc4ff; --accent2:#9ef0c0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  header{padding:18px 0;border-bottom:1px solid var(--line)}
+  header .wrap{max-width:980px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-weight:700;letter-spacing:.5px;color:var(--fg);text-decoration:none}
+  nav a{color:var(--muted);margin-left:18px;font-size:14px}
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
+  footer a{color:var(--muted)}
+
+  /* article */
+  .article-wrap{padding:56px 0 80px}
+  .back{display:inline-block;color:var(--muted);font-size:0.9rem;margin-bottom:2.5rem}
+  .back:hover{color:var(--fg)}
+  .eyebrow{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15em;
+    color:var(--muted);font-weight:600;margin:0 0 1rem}
+  h1{font-size:clamp(1.9rem,5vw,2.75rem);font-weight:700;line-height:1.15;
+    letter-spacing:-0.02em;margin:0 0 1rem;color:var(--fg)}
+  .subtitle{font-size:1.1rem;color:var(--muted);font-style:italic;margin:0 0 0.75rem}
+  .meta{font-size:0.875rem;color:var(--muted);margin:0 0 3rem}
+  .toc{margin-bottom:3.5rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}
+  .toc h2{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;
+    color:var(--muted);font-weight:600;margin:0 0 1rem}
+  .toc ol{list-style:none;counter-reset:toc;padding:0;margin:0}
+  .toc li{counter-increment:toc;margin-bottom:0.4rem}
+  .toc a{color:var(--muted);font-size:0.95rem}
+  .toc a::before{content:counter(toc,upper-roman) ". ";color:var(--muted)}
+  .toc a:hover{color:var(--fg);text-decoration:none}
+  section{margin-bottom:2.5rem}
+  section h2{font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;
+    margin:0 0 1.25rem;color:var(--fg)}
+  p{margin:0 0 1.25rem;font-size:1.05rem;color:var(--muted)}
+  p:last-child{margin-bottom:0}
+  em{font-style:italic;color:var(--fg)}
+  strong{font-weight:600;color:var(--fg)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:0.9em;background:var(--surface2);padding:0.1em 0.35em;border-radius:4px}
+  pre{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;overflow:auto;font-size:13.5px;color:#cfe8ff;margin:1.5rem 0}
+  pre code{background:none;padding:0}
+  .thesis{border-left:3px solid var(--accent);padding:0.25rem 0 0.25rem 1.25rem;margin:1.5rem 0}
+  .thesis p{font-weight:500;color:var(--fg);margin:0}
+  .pullquote{font-size:1.15rem;font-weight:500;line-height:1.5;
+    margin:2rem 0;padding-left:1.25rem;border-left:3px solid var(--line);color:var(--fg)}
+  .divider{text-align:center;color:var(--line);letter-spacing:0.5em;
+    margin:2.5rem 0;user-select:none}
+  .signoff{margin-top:2rem;color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a href="/" class="brand">Lex</a>
+  <nav>
+    <a href="/manifesto">Manifesto</a>
+    <a href="/posts/false-familiarity">Notes</a>
+    <a href="/#live">Live</a>
+    <a href="/#packages">Packages</a>
+    <a href="https://github.com/alpibrusl">GitHub</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap article-wrap">
+
+    <a href="/" class="back">← lexlang.org</a>
+
+    <p class="eyebrow">Notes</p>
+    <h1>False Familiarity</h1>
+    <p class="subtitle">An agent doesn't need to know a language to write it. It needs a fast way to find out it's wrong.</p>
+    <p class="meta">Alfonso Sastre &mdash; September 24, 2026</p>
+
+    <p>Some context, if this is your first stop here: <a href="/">Lex</a> is a programming
+    language we're building around one idea — a program should be mechanically checkable for
+    what it's allowed to do and whether it does what it claims, not just trusted to be. It has
+    essentially no users outside this project. <a href="https://code.lexlang.org">lex-code</a> is
+    a coding agent built specifically to write it. Picking a language with no real training data
+    and no community wasn't an accident — it was the cleanest way to ask a more general question:
+    what actually happens when you point an LLM at something it has no real experience with, and
+    what, if anything, helps. This post is what we found out.</p>
+
+    <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+            <li><a href="#usual-answer">The Usual Answer</a></li>
+            <li><a href="#wrong-kind-of-unfamiliar">The Wrong Kind of Unfamiliar</a></li>
+            <li><a href="#what-it-looked-like">What It Actually Looked Like</a></li>
+            <li><a href="#why-context-doesnt-fix-it">Why More Context Doesn't Fix It</a></li>
+            <li><a href="#division-of-labor">The Division of Labor</a></li>
+            <li><a href="#doesnt-need-to-be-smart">The Model Doesn't Need to Be Smart</a></li>
+            <li><a href="#beyond-one-language">Beyond One Language</a></li>
+        </ol>
+    </nav>
+
+    <section id="usual-answer">
+      <h2>The Usual Answer</h2>
+      <p>Point an agent at a language, a library, or a codebase it hasn't seen enough of in
+      training, and the standard answer is retrieval: index the docs, embed the examples, stuff
+      the relevant chunks into context, and hope the model assembles the right thing from what
+      it's just been handed. More context, better retrieval, a bigger window — the model didn't
+      know, so tell it.</p>
+      <p>That's the right fix for one specific failure: the model genuinely has no idea something
+      exists. It has never seen <code>list.zip</code>, so it doesn't reach for it, and a paragraph
+      of documentation in context fixes exactly that gap. We use retrieval for this constantly —
+      <code>lex-code</code>'s agents call a stdlib-lookup tool and a language-guide tool on
+      practically every real task. That's not the failure this post is about.</p>
+    </section>
+
+    <section id="wrong-kind-of-unfamiliar">
+      <h2>The Wrong Kind of Unfamiliar</h2>
+      <p>The failure that actually shows up, over and over, watching a model write Lex for the
+      first time, isn't ignorance. It's confidence in the wrong thing. Lex looks enough like the
+      languages a model has seen billions of lines of — pattern matching, <code>Option</code>
+      types (a value that might or might not be there), a functional core — that the model
+      doesn't experience it as unfamiliar at all. It
+      experiences it as <em>almost Rust</em>, or <em>almost a stricter Python</em>, and reaches
+      for whatever the nearest language actually does.</p>
+      <div class="thesis"><p>The problem was never that the model didn't know Lex. It's that it
+      was so sure it did, from somewhere else, that it never checked.</p></div>
+      <p>No amount of documentation in context fixes that, because the gap isn't missing
+      information — it's a wrong prior, and a wrong prior competes with whatever you just put in
+      context and often wins, especially once the actual context budget is small.</p>
+    </section>
+
+    <section id="what-it-looked-like">
+      <h2>What It Actually Looked Like</h2>
+      <p>Two real examples, from the same afternoon, building the recordings for
+      <a href="https://code.lexlang.org">code.lexlang.org</a>'s own landing page — nothing
+      staged, nothing picked after the fact to make a point.</p>
+      <p>Asked to reject a password made only of digits, the model wrote:</p>
+      <pre>let after := str.strip_suffix(addr, "@").map(fn (rest :: Str) -> Str {
+  rest
+})</pre>
+      <p><code>.map()</code> chained straight off an <code>Option</code>, the way you would in
+      Rust, in JavaScript, in a dozen languages with that method on that type. Lex doesn't have
+      it. The edit was rejected, rewritten, rejected again — the model kept reaching for the same
+      almost-right shape before it gave up on the method call entirely and fell back to a plain
+      <code>match</code>.</p>
+      <p>A cleaner case, same session, a boolean combinator:</p>
+      <pre>-  has_min_length(password, 8) &amp;&amp; has_digit(password)
++  has_min_length(password, 8) and has_digit(password)</pre>
+      <p>Its own explanation afterward, unprompted: <em>"It uses <code>&amp;&amp;</code>→<code>and</code>:
+      Lex has no <code>&amp;&amp;</code>; the fix was to the <code>and</code> keyword."</em> That
+      sentence is the whole post in miniature. It didn't look anything up to write that fix. It
+      already knew what <code>and</code> means — every language it's ever seen has some version of
+      it. What it needed wasn't a fact about Lex. It was one bit of information: <em>the thing you
+      just wrote is wrong</em>, delivered fast enough and specifically enough that a reasoning step
+      it was already capable of could take it from there.</p>
+    </section>
+
+    <section id="why-context-doesnt-fix-it">
+      <h2>Why More Context Doesn't Fix It</h2>
+      <p>You could imagine fixing the <code>&amp;&amp;</code> case with retrieval — put "Lex has no
+      <code>&amp;&amp;</code>, use <code>and</code>" in a doc chunk and hope it gets retrieved at
+      the right moment. It might even work, some of the time, for that one fact. It does not scale:
+      the number of "actually, not like the language you're thinking of" facts for any sufficiently
+      rich type system is enormous, most of them are exactly the kind of small syntactic
+      near-miss that's hardest to anticipate and index, and every one you add to context is
+      competing for a budget that a fully local, quantized model does not have much of to begin
+      with.</p>
+      <p>The type checker doesn't have that problem, because it isn't trying to anticipate the
+      mistake. It's just answering, after the fact, exactly and only the question that matters:
+      is this specific thing, right here, actually true. That answer is cheap to produce and
+      impossible to argue with, which a paragraph of retrieved documentation is neither.</p>
+    </section>
+
+    <section id="division-of-labor">
+      <h2>The Division of Labor</h2>
+      <p>None of this is an argument against retrieval. It's an argument about which question
+      retrieval is allowed to answer. <strong>What exists</strong> is a lookup problem, and lookup
+      tools are the right shape for it — <code>lex-code</code> reaches for one on nearly every
+      task, asking the stdlib what's actually in it rather than guessing. <strong>Whether what you
+      wrote is correct</strong> is not a lookup problem, and no amount of retrieval turns it into
+      one. That question only has one honest source of truth: run the checker, run the examples,
+      see what comes back.</p>
+      <p>Put plainly: retrieval for facts, a contract for correctness. The first tells the model
+      what's on the table. The second tells it, immediately and mechanically, whether it just
+      lied to itself.</p>
+    </section>
+
+    <section id="doesnt-need-to-be-smart">
+      <h2>The Model Doesn't Need to Be Smart</h2>
+      <p>Every recording behind this — the ones on <a href="https://code.lexlang.org">the
+      lex-code page</a>, the two quoted above — ran against <code>qwen3.8:27b-mlx</code>, a
+      quantized model small enough to run fully local on a laptop with no key and no cloud call.
+      Not a frontier reasoning model. Not the model writing this sentence. A modest, unremarkable,
+      entirely offline one.</p>
+      <p>That it still works is the actual claim, not a footnote to it. If the approach only held
+      up on the most capable model available, the interesting variable would be the model, and
+      the honest conclusion would be "big models can do anything." What we watched instead was a
+      small model be <em>wrong</em>, repeatedly, in exactly the way described above — and recover,
+      most of the time, because recovering from "here is precisely what's false" only takes the
+      kind of reasoning every model this size already has, not the kind only the largest ones do.
+      The bar an agent has to clear here isn't "know an unfamiliar language." It's "notice a
+      checker said no, and try a different, still-logical answer." That is a much lower bar, and
+      it's the one that was actually being tested.</p>
+      <p>It isn't a guarantee. The same afternoon, a different task — validating an email address —
+      put the same model into a real failure loop: the same near-miss edit, rejected, retried with
+      slightly different whitespace, rejected again, several times over, never quite converging
+      before we cut the session rather than let it burn its step budget. Cheap, fast disconfirmation
+      raises the floor and shortens most recoveries. It does not promise every one of them.</p>
+    </section>
+
+    <section id="beyond-one-language">
+      <h2>Beyond One Language</h2>
+      <p>None of this is really about Lex specifically. It's about any domain where an agent's
+      danger isn't ignorance but false pattern-matching — a new internal API shaped just closely
+      enough like a public one everyone's seen, an internal VCS with different semantics than the
+      git history a model has memorized by the terabyte, a config format that looks like YAML
+      until the one place it doesn't. Wherever that's the actual risk, the fix has the same shape:
+      don't try to out-document a wrong prior. Build the thing so being wrong is fast, cheap, and
+      unambiguous to find out — and let reasoning the model already has do the rest.</p>
+      <p>It's also not a pattern we invented. DeepMind's <a href="https://www.nature.com/articles/s41586-025-09833-y">AlphaProof and AlphaGeometry 2</a>
+      pair a language model with Lean and a symbolic geometry engine the same way: the model
+      proposes a candidate proof step, sometimes a wrong one, and the checker's answer is
+      immediate and not up for debate — good enough, on real International Mathematical Olympiad
+      problems, for silver-medal-level results, published in <em>Nature</em>.
+      <a href="https://www.nature.com/articles/s41586-023-06924-6">FunSearch</a> runs the
+      identical loop over code instead of proofs: an LLM proposes a program, a plain evaluator
+      function scores it, and only what actually verifies survives to the next generation —
+      enough to find genuinely new constructions in an open combinatorics problem no one had
+      solved. Neither system got better by being told more about the problem. They got better by
+      being wrong quickly, cheaply, and unambiguously, over and over, until they weren't.</p>
+      <p>Lex just happens to be the place that fix is load-bearing by design: a type checker and a
+      declared acceptance aren't bolted on to catch mistakes after the fact, they're the whole
+      mechanism the agent is iterating against, turn by turn. <a href="/manifesto">Trust by
+      verification, not comprehension</a> was always the claim at the level of a finished result.
+      This is what it looks like one keystroke at a time.</p>
+      <p class="signoff">— Alfonso Sastre, September 24, 2026</p>
+    </section>
+
+</div>
+</main>
+
+<footer><div class="wrap" style="max-width:980px">
+  Lex is built by <a href="https://alpibru.com">Alpibru</a> · EUPL-1.2 · EU-built, vendor-neutral ·
+  <a href="https://github.com/alpibrusl">github.com/alpibrusl</a> ·
+  <a href="/llms.txt">llms.txt</a>
+</div></footer>
+</body>
+</html>

@@ -9,5 +9,13 @@ cp index.html llms.txt styles.css robots.txt \
 # manifesto at a clean URL (/manifesto/); make its relative asset refs absolute
 sed -E 's#(href|src)="(styles\.css|favicon\.ico|favicon-32x32\.png|favicon-192x192\.png|apple-touch-icon\.png)"#\1="/\2"#g' \
   manifesto.html > _site/manifesto/index.html
+# posts at clean URLs (/posts/<slug>/) — each is fully self-contained (inline
+# styles, absolute asset refs already), so a plain copy is enough, no sed pass.
+mkdir -p _site/posts
+for f in posts/*.html; do
+  slug="$(basename "$f" .html)"
+  mkdir -p "_site/posts/$slug"
+  cp "$f" "_site/posts/$slug/index.html"
+done
 echo "lexlang.org" > _site/CNAME
 echo "built _site/ ($(find _site -type f | wc -l | tr -d ' ') files)"
