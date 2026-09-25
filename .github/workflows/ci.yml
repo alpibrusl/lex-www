@@ -14,7 +14,7 @@ jobs:
   drift:
     runs-on: ubuntu-latest
     env:
-      LEX_VERSION: v0.10.7
+      LEX_VERSION: v0.11.72
     steps:
       - uses: actions/checkout@v4
       - name: Install lex toolchain
