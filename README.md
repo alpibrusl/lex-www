@@ -8,6 +8,7 @@ New here? Read the [manifesto](https://lexlang.org) · install [lex-lang](https:
 
 ## Packages
 
+- Find a package from the CLI before writing one: `lex pkg search <words>` (e.g. `lex pkg search http router`) — prints the `lex.toml` line to add
 - [Browse lex-* repos on GitHub](https://github.com/orgs/alpibrusl/repositories?q=lex-&type=public) — every public package, always current
 - [Browse the lex-official registry](https://console.lexlang.org/#/lex-official) — what's actually published and installable
 
