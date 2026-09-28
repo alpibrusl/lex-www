@@ -27,6 +27,7 @@ fn solo_note() -> Str {
 # without this repo being edited — so nothing here restates them.
 fn packages_md() -> Str {
   str.join([
+    "- Find a package from the CLI before writing one: `lex pkg search <words>` (e.g. `lex pkg search http router`) — prints the `lex.toml` line to add\n",
     "- [Browse lex-* repos on GitHub](", cat.github_packages_url(), ") — every public package, always current\n",
     "- [Browse the lex-official registry](", cat.hub_url(), ") — what's actually published and installable"
   ], "")
